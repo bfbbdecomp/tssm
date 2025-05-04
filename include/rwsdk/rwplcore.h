@@ -1,8 +1,8 @@
 #ifndef RWPLCORE_H
 #define RWPLCORE_H
 
-#include <stdarg.h>
-#include <stddef.h>
+#include <libc/stdarg.h>
+#include <PowerPC_EABI_Support\MSL\MSL_C\MSL_Common\Include\size_t.h>
 
 #define rwBIGENDIAN
 

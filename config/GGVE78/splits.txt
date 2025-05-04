@@ -1536,25 +1536,25 @@ dolphin/ax/src/AXProf.c:
 	.text       start:0x802D8E84 end:0x802D8ECC
 	.sbss       start:0x804B1E78 end:0x804B1E88
 
-reverb_hi.c:
+dolphin/axfx/src/reverb_hi.c:
 	.text       start:0x802D8ECC end:0x802D9D10
 	.data       start:0x803BF6C0 end:0x803BF6E0
 	.sdata2     start:0x804B4990 end:0x804B49D0
 
-reverb_std.c:
+dolphin/axfx/src/reverb_std.c:
 	.text       start:0x802D9D10 end:0x802D9E58
 
-chorus.c:
+dolphin/axfx/src/chorus.c:
 	.text       start:0x802D9E58 end:0x802D9EA8
 
-delay.c:
+dolphin/axfx/src/delay.c:
 	.text       start:0x802D9EA8 end:0x802D9F38
 
-axfx.c:
+dolphin/axfx/src/axfx.c:
 	.text       start:0x802D9F38 end:0x802D9F88
 	.sdata      start:0x804B0610 end:0x804B0618
 
-reverb_hi_4ch.c:
+dolphin/axfx/src/reverb_hi_4ch.c:
 	.text       start:0x802D9F88 end:0x802DAC68
 	.data       start:0x803BF6E0 end:0x803BF708
 	.sdata2     start:0x804B49D0 end:0x804B4A08
@@ -1753,7 +1753,7 @@ dolphin/gx/src/GXPerf.c:
 	.text       start:0x802EFA54 end:0x802F0414
 	.data       start:0x803C05F8 end:0x803C06E8
 
-mix.c:
+dolphin/mix/src/mix.c:
 	.text       start:0x802F0414 end:0x802F2748
 	.data       start:0x803C06E8 end:0x803C12A8
 	.bss        start:0x80483878 end:0x80485080
@@ -1811,7 +1811,7 @@ dolphin/os/src/OSError.c:
 	.bss        start:0x804850F0 end:0x80485140
 	.sdata      start:0x804B06F8 end:0x804B0700
 
-OSExec.c:
+dolphin/os/src/OSExec.c:
 	.text       start:0x802F54F0 end:0x802F5E50
 	.data       start:0x803C1C58 end:0x803C1C68
 	.sdata      start:0x804B0700 end:0x804B0708
@@ -1856,7 +1856,7 @@ dolphin/os/src/OSRtc.c:
 	.text       start:0x802F8230 end:0x802F8DD0
 	.bss        start:0x80485140 end:0x80485198
 
-OSSemaphore.c:
+dolphin/os/src/OSSemaphore.c:
 	.text       start:0x802F8DD0 end:0x802F8EF8
 
 dolphin/os/src/OSSync.c:
@@ -1873,11 +1873,11 @@ dolphin/os/src/OSTime.c:
 	.text       start:0x802FAA58 end:0x802FAED4
 	.data       start:0x803C3018 end:0x803C3078
 
-dolphin/os/src/init/__start.c:
+dolphin/os/src/__start.c:
 	.init       start:0x800051EC end:0x800054EC
 	.sbss       start:0x804B20D8 end:0x804B20E0
 
-dolphin/os/src/init/__ppc_eabi_init.cpp:
+dolphin/os/src/__ppc_eabi_init.cpp:
 	.init       start:0x800054EC end:0x80005544
 	.text       start:0x802FAED4 end:0x802FAF68
 

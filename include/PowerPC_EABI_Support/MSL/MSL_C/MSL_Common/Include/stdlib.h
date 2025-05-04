@@ -1,7 +1,7 @@
 #ifndef _MSL_STDLIB
 #define _MSL_STDLIB
 
-#include <size_t.h>
+#include "size_t.h"
 
 #ifdef __cplusplus
 extern "C" {
