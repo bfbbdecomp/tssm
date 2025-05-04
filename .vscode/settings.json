@@ -18,7 +18,21 @@
     "*.inc": "c",
     ".clangd": "yaml",
     "cstring": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "dolphin.h": "c",
+    "types.h": "c",
+    "__ax.h": "c",
+    "ctype.h": "c",
+    "stdio.h": "c",
+    "stdarg.h": "c",
+    "string.h": "c",
+    "stddef.h": "c",
+    "size_t.h": "c",
+    "ax.h": "c",
+    "math.h": "c",
+    "os.h": "c",
+    "va_list.h": "c",
+    "fake_tgmath.h": "c"
   },
   // Disable C/C++ IntelliSense, use clangd instead
   "C_Cpp.intelliSenseEngine": "default",

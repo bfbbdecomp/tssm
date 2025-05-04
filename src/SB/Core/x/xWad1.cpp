@@ -2519,8 +2519,8 @@ static void SingleUpdate(xAnimSingle* single, F32 timeDelta)
 
                 if (curr == NULL)
                 {
-                    fprintf(stderr, "State \"%s\" no default conditionals true!\n",
-                            single->State->Name);
+                    //fprintf(stderr, "State \"%s\" no default conditionals true!\n",
+                    //        single->State->Name);
                     curr = single->State->Default;
                 }
 

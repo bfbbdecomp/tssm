@@ -236,9 +236,10 @@ cflags_tssm = [
     '-pragma "cpp_extensions on"',
     "-inline off",
     "-gccinc",
+    "-sym on",
     "-i include/bink",
-    "-i include/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
-    "-i include/PowerPC_EABI_Support/MSL/MSL_C++/MSL_Common/Include",
+    f"-i include/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
+    f"-i include/PowerPC_EABI_Support/MSL/MSL_C++/MSL_Common/Include",
     "-i include/inline",
     "-i include/rwsdk",
     "-i src/SB/Core/gc",
@@ -414,6 +415,17 @@ config.libs = [
         ],
     ),
     DolphinLib(
+        "axfx",
+        [
+            Object(NonMatching, "dolphin/axfx/src/axfx.c"),
+            Object(NonMatching, "dolphin/axfx/src/chorus.c"),
+            Object(NonMatching, "dolphin/axfx/src/delay.c"),
+            Object(NonMatching, "dolphin/axfx/src/reverb_hi.c"),
+            Object(NonMatching, "dolphin/axfx/src/reverb_hi_4ch.c"),
+            Object(NonMatching, "dolphin/axfx/src/reverb_std.c"),
+        ],
+    ),
+    DolphinLib(
         "base",
         [
             Object(NonMatching, "dolphin/base/src/PPCArch.c"),
@@ -494,6 +506,12 @@ config.libs = [
         ],
     ),
     DolphinLib(
+        "mix",
+        [
+            Object(NonMatching, "dolphin/mix/src/mix.c"),
+        ],
+    ),
+    DolphinLib(
         "mtx",
         [
             Object(NonMatching, "dolphin/mtx/src/mtx.c"),
@@ -517,6 +535,7 @@ config.libs = [
             Object(NonMatching, "dolphin/os/src/OSCache.c"),
             Object(NonMatching, "dolphin/os/src/OSContext.c"),
             Object(NonMatching, "dolphin/os/src/OSError.c"),
+            Object(NonMatching, "dolphin/os/src/OSExec.c"),
             Object(NonMatching, "dolphin/os/src/OSFont.c"),
             Object(NonMatching, "dolphin/os/src/OSInterrupt.c"),
             Object(NonMatching, "dolphin/os/src/OSLink.c"),
@@ -526,11 +545,12 @@ config.libs = [
             Object(NonMatching, "dolphin/os/src/OSReset.c"),
             Object(NonMatching, "dolphin/os/src/OSResetSW.c"),
             Object(NonMatching, "dolphin/os/src/OSRtc.c"),
+            Object(NonMatching, "dolphin/os/src/OSSemaphore.c"),
             Object(NonMatching, "dolphin/os/src/OSSync.c"),
             Object(NonMatching, "dolphin/os/src/OSThread.c"),
             Object(NonMatching, "dolphin/os/src/OSTime.c"),
-            Object(NonMatching, "dolphin/os/src/init/__start.c"),
-            Object(NonMatching, "dolphin/os/src/init/__ppc_eabi_init.cpp"),
+            Object(NonMatching, "dolphin/os/src/__start.c"),
+            Object(NonMatching, "dolphin/os/src/__ppc_eabi_init.cpp"),
         ],
     ),
     DolphinLib(

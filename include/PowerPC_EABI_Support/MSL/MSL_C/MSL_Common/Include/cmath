@@ -1,8 +1,6 @@
 #ifndef _MSL_CMATH
 #define _MSL_CMATH
 
-#include <math.h>
-
 namespace std
 {
     // TODO: fix inline function ordering

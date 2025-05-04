@@ -1,5 +1,5 @@
 #include "zFMV.h"
-#include <stdio.h>
+#include <libc/stdio.h>
 #include "iFMV.h"
 #include "xSnd.h"
 #include "zFMV.h"

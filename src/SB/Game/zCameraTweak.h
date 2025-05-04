@@ -3,7 +3,7 @@
 
 #include "xDynAsset.h"
 
-#include <stddef.h>
+#include <PowerPC_EABI_Support\MSL\MSL_C\MSL_Common\Include\size_t.h>
 
 struct CameraTweak_asset : xDynAsset
 {

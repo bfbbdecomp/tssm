@@ -3,6 +3,7 @@
 
 #include "stdlib.h"
 #include <types.h>
+#include "dolphin\types.h"
 #include <rpworld.h>
 #include "rwcore.h"
 #include "xModel.h"
