@@ -365,6 +365,7 @@ config.libs = [
         "cflags": cflags_runtime,
         "progress_category": "sdk",
         "objects": [
+            # not even sure bink is used
             Object(NonMatching, "bink/src/sdk/decode/ngc/binkngc.c"),
             Object(NonMatching, "bink/src/sdk/decode/ngc/ngcsnd.c"),
             Object(NonMatching, "bink/src/sdk/decode/binkread.c"),
