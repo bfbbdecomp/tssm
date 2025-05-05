@@ -4,7 +4,7 @@
 #include <types.h>
 #include "zGlobals.h"
 #include "xVec3.h"
-#include "stdlib.h"
+#include <libc/stdlib.h>
 #include <types.h>
 #include "fastmath.h"
 #include "xVolume.h"

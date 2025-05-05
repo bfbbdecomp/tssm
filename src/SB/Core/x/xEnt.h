@@ -3,7 +3,7 @@
 
 #include <rwcore.h>
 #include <rpworld.h>
-#include <string.h>
+#include <libc/string.h>
 
 #include "xBase.h"
 #include "xMath3.h"

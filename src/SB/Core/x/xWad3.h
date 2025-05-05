@@ -1,7 +1,7 @@
 #ifndef XWAD3_H
 #define XWAD3_H
 
-#include "stdlib.h"
+#include <libc/stdlib.h>
 #include <types.h>
 #include "dolphin\types.h"
 #include <rpworld.h>

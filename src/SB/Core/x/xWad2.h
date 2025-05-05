@@ -1,10 +1,14 @@
 #ifndef XWAD2_H
 #define XWAD2_H
 
+#include <PowerPC_EABI_Support\MSL_C\PPC_EABI\math_ppc.h>
+#include "cmath.h"
+
 #include "zGlobals.h"
 #include <types.h>
 #include <rpworld.h>
-#include "stdlib.h"
+#include <libc/stdlib.h>
+#include <stdlib.h>
 #include "xString.h"
 #include "string.h"
 #include <cstring>

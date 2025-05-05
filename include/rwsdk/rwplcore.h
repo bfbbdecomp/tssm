@@ -2,7 +2,7 @@
 #define RWPLCORE_H
 
 #include <libc/stdarg.h>
-#include <PowerPC_EABI_Support\MSL\MSL_C\MSL_Common\Include\size_t.h>
+#include <libc/stddef.h>
 
 #define rwBIGENDIAN
 
@@ -53,7 +53,7 @@ struct RwInt128
 #define RwUInt16MAXVAL 0xFFFF
 #define RwUInt16MINVAL 0x0000
 
-#include <math.h>
+#include <libc/math.h>
 
 #define _RW_C1 ((float)4.1666667908e-02)
 #define _RW_C2 ((float)-1.3888889225e-03)

@@ -1198,7 +1198,7 @@ static void iSG_upd_icostat(CARDStat*, CARDStat* stat)
     CARDSetCommentAddress(stat, 0);
     CARDSetBannerFormat(stat, CARD_STAT_BANNER_RGB5A3);
     CARDSetIconAddress(stat, 0x40);
-    CARDSetIconAnim(stat, CARD_STAT_ANIM_LOOP);
+    //CARDSetIconAnim(stat, CARD_STAT_ANIM_LOOP);
 
     for (S32 i = 0; i < CARD_ICON_MAX; ++i)
     {
@@ -2493,17 +2493,17 @@ void iMath3Init()
 
 F32 itan(F32 x)
 {
-    return std::tanf(x);
+    return tanf(x);
 }
 
 F32 icos(F32 x)
 {
-    return std::cosf(x);
+    return cosf(x);
 }
 
 F32 isin(F32 x)
 {
-    return std::sinf(x);
+    return sinf(x);
 }
 
 //                                                                          iLight
@@ -2822,8 +2822,8 @@ static void PlayFMV(char* fname, u32 buttons, F32 time)
     GXGetCullMode(&cull_mode);
     iFMV::InitDisplay(_RwDlRenderMode);
     iPadStopRumble(globals.pad0);
-    RADSetAudioMemory(arammalloc, aramfree);
-    RADSetMemory(iFMVmalloc, iFMVfree);
+    //RADSetAudioMemory(arammalloc, aramfree);
+    //RADSetMemory(iFMVmalloc, iFMVfree);
     Setup_surface_array();
 
     for (char* c = fname; *c != NULL; c++)

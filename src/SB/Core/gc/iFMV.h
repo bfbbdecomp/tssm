@@ -3,7 +3,7 @@
 
 #include <types.h>
 #include <bink.h>
-#include <size_t.h>
+#include <PowerPC_EABI_Support\MSL_C\PPC_EABI\math_ppc.h>
 
 struct _GXRenderModeObj;
 
