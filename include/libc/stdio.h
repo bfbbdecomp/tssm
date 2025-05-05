@@ -1,7 +1,7 @@
 #ifndef _STDIO_H_
 #define _STDIO_H_
 
-#include "libc/stdarg.h"
+#include <libc/stdarg.h>
 
 typedef struct
 {

@@ -2023,7 +2023,7 @@ void xAnimFileEval(xAnimFile* data, F32 time, F32* bilinear, U32 flags, xVec3* t
         for (i = 0; i < 2; ++i)
         {
             F32 f30 = CLAMP(bilinear[i], 0.0f, data->NumAnims[i] - 1);
-            f32 t = std::floorf(f30);
+            f32 t = floorf(f30);
             bilerp[i] = f30 - t;
             biindex[i] = t;
             biplus[i] = MIN(biindex[i] + 1, data->NumAnims[i]);

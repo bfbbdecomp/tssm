@@ -2,7 +2,7 @@
 #define XPKRSVC_H
 
 #include <types.h>
-#include <time.h>
+#include "iTime.h"
 
 #include "xhipio.h"
 #include "xordarray.h"

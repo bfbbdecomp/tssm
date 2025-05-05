@@ -1,7 +1,7 @@
 #ifndef __BINK_H__
 #define __BINK_H__
 
-#include <size_t.h>
+//#include <size_t.h>
 
 #define BINKSURFACE8P 0
 #define BINKSURFACE24 1
@@ -52,8 +52,8 @@ extern int Lock_RAD_3D_image(HRAD3DIMAGE rad_image, void* out_pixel_buffer,
                              unsigned int* out_buffer_pitch, unsigned int* arg3);
 extern void Unlock_RAD_3D_image(HRAD3DIMAGE rad_image);
 extern void Blit_RAD_3D_image(HRAD3DIMAGE Image, float, float, float, float, float);
-extern void RADSetAudioMemory(void* (*malloc)(size_t), void (*free)(void*));
-extern void RADSetMemory(void* (*malloc)(size_t), void (*free)(void*));
+//extern void RADSetAudioMemory(void* (*malloc)(size_t), void (*free)(void*));
+//extern void RADSetMemory(void* (*malloc)(size_t), void (*free)(void*));
 extern HBINK BinkOpen(const char* fname, void*);
 extern void BinkGetError();
 extern void BinkSetVolume(HBINK bink, unsigned int, int volume);

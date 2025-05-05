@@ -1,24 +1,24 @@
 #ifndef _DOLPHIN_H_
 #define _DOLPHIN_H_
 
-#include <dolphin/types.h>
-#include <dolphin/os.h>
-#include <dolphin/dsp.h>
-#include <dolphin/dvd.h>
-#include <dolphin/gx.h>
-#include <dolphin/hio.h>
-#include <dolphin/mtx.h>
-#include <dolphin/vi.h>
-#include <dolphin/card.h>
-#include <dolphin/perf.h>
-#include <dolphin/ar.h>
-#include <dolphin/base/PPCArch.h>
-#include <dolphin/db.h>
-#include <dolphin/pad.h>
-#include <dolphin/dtk.h>
-#include <dolphin/ai.h>
-#include <dolphin/demo.h>
-#include <dolphin/exi.h>
-#include <dolphin/si.h>
+#include <Dolphin/types.h>
+#include <Dolphin/os.h>
+#include <Dolphin/dsp.h>
+#include <Dolphin/dvd.h>
+#include <Dolphin/gx.h>
+#include <Dolphin/hio.h>
+#include <Dolphin/mtx.h>
+#include <Dolphin/vi.h>
+#include <Dolphin/card.h>
+#include <Dolphin/perf.h>
+#include <Dolphin/ar.h>
+#include <Dolphin/base/PPCArch.h>
+#include <Dolphin/db.h>
+#include <Dolphin/pad.h>
+#include <Dolphin/dtk.h>
+#include <Dolphin/ai.h>
+#include <Dolphin/demo.h>
+#include <Dolphin/exi.h>
+#include <Dolphin/si.h>
 
 #endif

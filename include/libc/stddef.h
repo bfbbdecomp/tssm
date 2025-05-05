@@ -3,7 +3,7 @@
 
 #define offsetof(type, member) ((size_t) & (((type*)0)->member))
 
-//typedef unsigned int size_t;
+typedef unsigned long size_t;
 
 #ifndef NULL
 #define NULL 0L

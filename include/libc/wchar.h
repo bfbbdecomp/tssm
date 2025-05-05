@@ -1,9 +1,9 @@
 #ifndef _WCHAR_H_
 #define _WCHAR_H_
 
-#include <stdio.h>
+#include <libc/stdio.h>
 
-typedef unsigned short wchar_t;
+//typedef U8 wchar_t;
 
 int fwide(FILE* stream, int mode);
 

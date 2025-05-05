@@ -1,19 +1,19 @@
 #ifndef _DOLPHIN_TYPES_H_
 #define _DOLPHIN_TYPES_H_
 
-typedef signed char s8;
-typedef unsigned char u8;
-typedef signed short int s16;
-typedef unsigned short int u16;
-typedef signed long s32;
-typedef unsigned long u32;
-typedef signed long long int s64;
+typedef signed   char          s8;
+typedef unsigned char          u8;
+typedef signed   short int     s16;
+typedef unsigned short int     u16;
+typedef signed   long          s32;
+typedef unsigned long          u32;
+typedef signed   long long int s64;
 typedef unsigned long long int u64;
 
-typedef float f32;
+typedef float  f32;
 typedef double f64;
 
-typedef char* Ptr;
+typedef char *Ptr;
 
 typedef int BOOL;
 
@@ -24,7 +24,7 @@ typedef int BOOL;
 #define AT_ADDRESS(addr) : (addr)
 #elif defined(__GNUC__)
 //#define AT_ADDRESS(addr) __attribute__((address((addr))))
-#define AT_ADDRESS(addr) // was removed in GCC. define in linker script instead.
+#define AT_ADDRESS(addr)  // was removed in GCC. define in linker script instead.
 #else
 #error unknown compiler
 #endif
@@ -42,6 +42,6 @@ typedef int BOOL;
 #include "libc/string.h"
 #include "libc/ctype.h"
 
-#include <PowerPC_EABI_Support\MSL\MSL_C\MSL_Common\Include\cmath>
+#include "cmath.h"
 
 #endif

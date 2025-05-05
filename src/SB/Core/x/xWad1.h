@@ -1,6 +1,8 @@
 #ifndef XWAD1_H
 #define XWAD1_H
 
+#include <PowerPC_EABI_Support\MSL_C\PPC_EABI\math_ppc.h>
+
 #include "zGlobals.h"
 #include "xCutscene.h"
 #include "iCutscene.h"

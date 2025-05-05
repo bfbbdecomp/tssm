@@ -2,6 +2,10 @@
 #define IWAD_H
 
 #include "../src/sb/game/zGlobals.h"
+#include "types.h"
+#include "dolphin/types.h"
+#include "cmath.h"
+#include "math.h"
 
 #include "iAnim.h"
 #include "iAnimSKB.h"

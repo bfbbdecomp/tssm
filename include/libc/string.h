@@ -1,7 +1,8 @@
 #ifndef _STRING_H_
 #define _STRING_H_
 
-#include <PowerPC_EABI_Support\MSL\MSL_C\MSL_Common\Include\size_t.h>
+#include <libc/stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

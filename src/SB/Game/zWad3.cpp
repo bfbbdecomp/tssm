@@ -1,5 +1,7 @@
 #include "zWad3.h"
 
+#include <../src/dolphin/support/string.c>
+
 //                              zVolume
 
 struct PreCalcOcclude

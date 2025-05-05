@@ -9,7 +9,7 @@
 #include <dolphin/gx/GXTransform.h>
 #include <dolphin/mtx.h>
 #include <dolphin/vi/vifuncs.h>
-#include <string.h>
+#include <libc/string.h>
 #include <types.h>
 
 #define FONT_MATRIX_ID 0x1E
@@ -148,7 +148,7 @@ void ROMFont::DrawTextBox(S32 param_1, S32 param_2, S32 param_3, S32 param_4, ch
     {
         RenderBegin();
         strcpy(acStack_128, str);
-        tokenizedString = strtok(acStack_128, " ");
+        //tokenizedString = strtok(acStack_128, " ");
         baseWidth = GetWidth(" ");
         iVar4 = param_2 + param_4;
         iVar5 = param_1;
@@ -161,7 +161,7 @@ void ROMFont::DrawTextBox(S32 param_1, S32 param_2, S32 param_3, S32 param_4, ch
                 iVar5 = param_1;
             }
             DrawString(iVar5, param_2, tokenizedString);
-            tokenizedString = strtok(NULL, " ");
+            //tokenizedString = strtok(NULL, " ");
             iVar5 = tokWidth + baseWidth + iVar5;
         }
         RenderEnd();
