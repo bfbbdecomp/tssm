@@ -1,35 +1,13 @@
 The Spongebob Squarepants Movie Game
-[![Build Status]][actions] ![Progress] ![DOL Progress] ![RELs Progress] [![Discord Badge]][discord]
+[![Build Status]][actions] [![Code Progress]][progress] [![Discord Badge]][discord]
 =============
 
-<!--
-Replace with your repository's URL.
--->
-[Build Status]: https://github.com/zeldaret/tww/actions/workflows/build.yml/badge.svg
-[actions]: https://github.com/zeldaret/tww/actions/workflows/build.yml
-<!---
-Code progress URL:
-https://progress.decomp.club/data/[project]/[version]/all/?mode=shield&measure=code
-URL encoded then appended to: https://img.shields.io/endpoint?label=Code&url=
--->
-[Progress]: https://img.shields.io/endpoint?label=Code&url=https%3A%2F%2Fprogress.decomp.club%2Fdata%2Ftww%2FGZLE01%2Fall%2F%3Fmode%3Dshield%26measure%3Dcode
-<!---
-DOL progress URL:
-https://progress.decomp.club/data/[project]/[version]/dol/?mode=shield&measure=code
-URL encoded then appended to: https://img.shields.io/endpoint?label=DOL&url=
--->
-[DOL Progress]: https://img.shields.io/endpoint?label=DOL&url=https%3A%2F%2Fprogress.decomp.club%2Fdata%2Ftww%2FGZLE01%2Fdol%2F%3Fmode%3Dshield%26measure%3Dcode
-<!--
-REL progress URL:
-https://progress.decomp.club/data/[project]/[version]/modules/?mode=shield&measure=code
-URL encoded then appended to: https://img.shields.io/endpoint?label=RELs&url=
--->
-[RELs Progress]: https://img.shields.io/endpoint?label=RELs&url=https%3A%2F%2Fprogress.decomp.club%2Fdata%2Ftww%2FGZLE01%2Fmodules%2F%3Fmode%3Dshield%26measure%3Dcode
-<!--
-Replace with your Discord server's ID and invite URL.
--->
-[Discord Badge]: https://img.shields.io/discord/727908905392275526?color=%237289DA&logo=discord&logoColor=%23FFFFFF
-[discord]: https://discord.gg/hKx3FJJgrV
+[Build Status]: https://github.com/bfbbdecomp/tssm/actions/workflows/build.yml/badge.svg
+[actions]: https://github.com/bfbbdecomp/tssm/actions/workflows/build.yml
+[Code Progress]: https://decomp.dev/bfbbdecomp/tssm.svg?mode=shield&category=all&measure=code&label=Code
+[progress]: https://decomp.dev/bfbbdecomp/tssm
+[Discord Badge]: https://img.shields.io/discord/688807550715560050?color=%237289DA&logo=discord&logoColor=%23FFFFFF
+[discord]: https://discord.com/invite/dVbGFdYU6A
 
 A work-in-progress decompilation of TSSM.
 
