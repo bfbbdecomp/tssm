@@ -277,13 +277,13 @@ S32 xUtilStartup()
 
         S32 i, j;
         U32 crc_accum;
-    
+
         if (g_crc_needinit)
         {
             for (i = 0; i < 256; i++)
             {
                 crc_accum = (U32)i << 24;
-    
+
                 for (j = 0; j < 8; j++)
                 {
                     if (crc_accum & (1 << 31))
@@ -295,10 +295,10 @@ S32 xUtilStartup()
                         crc_accum = (crc_accum << 1);
                     }
                 }
-    
+
                 g_crc32_table[i] = crc_accum;
             }
-    
+
             g_crc_needinit = 0;
         }
     }
@@ -495,7 +495,7 @@ S32 icompare(const substr& s1, const substr& s2)
     return result;
 }
 
-S32 imemcmp(const void* d1, const void* d2, unsigned long size)
+S32 imemcmp(const void* d1, const void* d2, size_t size)
 {
     char* s1 = (char*)d1;
     char* s2 = (char*)d2;

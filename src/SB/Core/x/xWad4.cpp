@@ -1,4 +1,9 @@
 #include "xWad4.h"
+#include "rwplcore.h"
+#include "xPad.h"
+#include "zGame.h"
+#include "zScene.h"
+#include <math.h>
 
 //                                              xRay / xScene
 
@@ -1362,6 +1367,78 @@ RyzMemGrow* RyzMemGrow::Init(xBase* growuser)
 }
 
 //                                                xRender
+
+//                                                xRenderState
+
+void xRenderFixIMEnd()
+{
+}
+
+void xRenderFixIMBegin()
+{
+}
+
+void xRenderFixUntexturedEnd(RpAtomic* atomic)
+{
+}
+
+void xRenderFixUntexturedBegin(RpAtomic* atomic)
+{
+}
+
+S32 old_alpha_discard_value_gc;
+bool alphaDiscardCurrentlySet;
+
+void xRenderStateResetAlphaDiscard()
+{
+    alphaDiscardCurrentlySet = false;
+    RwGameCubeSetAlphaCompare(6, old_alpha_discard_value_gc, 0, 6, old_alpha_discard_value_gc);
+    if ((U8)old_alpha_discard_value_gc != 0)
+    {
+        _rwDlRenderStateSetZCompLoc(FALSE);
+    }
+    else
+    {
+        _rwDlRenderStateSetZCompLoc(TRUE);
+    }
+}
+
+void xRenderStateSetAlphaDiscard(S32 ref)
+{
+    alphaDiscardCurrentlySet = true;
+    RwEngineInstance->dOpenDevice.fpRenderStateGet(rwRENDERSTATEALPHATESTFUNCTIONREF,
+                                                   &old_alpha_discard_value_gc);
+    RwGameCubeSetAlphaCompare(6, ref, 0, 6, ref);
+    if (ref > 0)
+    {
+        _rwDlRenderStateSetZCompLoc(FALSE);
+    }
+    else
+    {
+        _rwDlRenderStateSetZCompLoc(TRUE);
+    }
+}
+
+void xRenderSceneExit()
+{
+}
+
+void xRenderSceneEnter()
+{
+}
+
+//                                                xRenderBuffer
+
+void xRenderBufferInit()
+{
+    gRenderBuffer.m_mode = 0;
+    gRenderBuffer.m_indexCount = 0;
+    gRenderBuffer.m_vertexCount = 0;
+    gRenderBuffer.m_vertexTypeSize = 36;
+    gRenderBuffer.m_index = gRenderArr.m_index;
+    gRenderBuffer.m_vertex = gRenderArr.m_vertex;
+    gRenderBuffer.m_vertexTZ = gRenderArr.m_vertexTZ;
+}
 
 //                                              xQuickCull cont.
 
@@ -3453,8 +3530,8 @@ void xPadKill()
 
 void xPadRumbleEnable(S32 idx, S32 enable)
 {
-    _tagxPad* p = mPad + idx;
-    if (p->state != 2)
+    _tagxPad* p = &mPad[idx];
+    if (p->state != ePad_Enabled)
     {
         enable = 0;
     }
@@ -3470,7 +3547,7 @@ void xPadRumbleEnable(S32 idx, S32 enable)
         if (p->flags & 8)
         {
             p->flags ^= 8;
-            xPadDestroyRumbleChain(mPad + idx);
+            //xPadDestroyRumbleChain(mPad + idx);
         }
     }
 }
@@ -3478,10 +3555,21 @@ void xPadRumbleEnable(S32 idx, S32 enable)
 // WIP.
 _tagxPad* xPadEnable(S32 idx)
 {
-    _tagxPad* p = mPad + idx;
+    _tagxPad* p = &mPad[idx];
     if (p->state == ePad_Disabled && idx == 0)
     {
-        p = iPadEnable(mPad + idx, 0);
+        p = iPadEnable(&mPad[0], 0);
+        if (p->state == ePad_Enabled || p->state != ePad_Disabled)
+        {
+            if (p->flags & 4)
+            {
+                p->flags |= 8;
+            }
+            else if (p->flags & 8)
+            {
+                p->flags ^= 8;
+            }
+        }
     }
     return p;
 }
@@ -3489,12 +3577,262 @@ _tagxPad* xPadEnable(S32 idx)
 S32 xPadInit()
 {
     memset(mPad, 0, sizeof(mPad));
-    memset(mRumbleList, 0, sizeof(mRumbleList));
+    //memset(mRumbleList, 0, sizeof(mRumbleList));
     S32 code = iPadInit();
     if (!code)
     {
         return 0;
     }
-    gPlayerPad = mPad;
+    //gPlayerPad = mPad;
     return 1;
+}
+
+// WIP.
+S32 xPadUpdate(S32 idx, F32 time_passed)
+{
+    U32 new_on;
+    _tagxPad* p = &mPad[idx];
+    S32 ret;
+    U32 fake_dpad;
+    S32 i;
+
+    if (idx == 0)
+    {
+        if (zScene_ScreenAdjustMode() == 0)
+        {
+            if (/*!zMenuRunning() &&*/ !zGameIsPaused())
+            {
+                p->flags &= ~0x10;
+            }
+            else
+            {
+                p->flags |= 0x10;
+            }
+        }
+        else
+        {
+            p->flags &= ~0x10;
+        }
+
+        if (p->al2d_timer >= 0.35f)
+            p->al2d_timer = 0.35f;
+        if (p->ar2d_timer >= 0.35f)
+            p->ar2d_timer = 0.35f;
+        if (p->d_timer >= 0.35f)
+            p->d_timer = 0.35f;
+
+        fake_dpad = 0;
+        ret = iPadUpdate(&mPad[idx], &new_on);
+
+        if (!ret)
+        {
+            p->pressed = 0;
+            p->released = 0;
+            return 1;
+        }
+
+        if (p->flags & 0x10)
+        {
+            if (p->flags & 0x01)
+            {
+                if (p->analog1.x < 50)
+                    fake_dpad |= 0x80;
+                else if (p->analog1.x > 0x31)
+                    fake_dpad |= 0x20;
+
+                if (p->analog1.y < 50)
+                    fake_dpad |= 0x10;
+                else if (p->analog1.y > 0x31)
+                    fake_dpad |= 0x40;
+
+                if (fake_dpad == 0)
+                {
+                    p->al2d_timer = 0.0f;
+                }
+                else
+                {
+                    p->al2d_timer -= time_passed;
+                    if (p->al2d_timer <= 0.0f)
+                    {
+                        new_on |= fake_dpad;
+                        p->al2d_timer = 0.35f;
+                    }
+                }
+            }
+
+            if (p->flags & 0x02)
+            {
+                S32 a2x = p->analog2.x;
+                S32 a2y = p->analog2.y;
+                if (a2x <= 50 || a2x >= 207 || a2y <= 50 || a2y >= 207)
+                {
+                    p->ar2d_timer -= time_passed;
+                    if (p->ar2d_timer <= 0.0f)
+                    {
+                        p->ar2d_timer = 0.35f;
+
+                        if (a2x < 50)
+                            new_on |= 0x80;
+                        else if (a2x > 0x31)
+                            new_on |= 0x20;
+
+                        if (a2y < 50)
+                            new_on |= 0x10;
+                        else if (a2y > 0x31)
+                            new_on |= 0x40;
+                    }
+                }
+                else
+                {
+                    p->ar2d_timer = 0.0f;
+                }
+            }
+        }
+
+        p->pressed = new_on & ~p->on;
+        p->released = p->on & ~new_on;
+        p->on = new_on;
+
+        for (i = 0; i < 22; i += 2)
+        {
+            U32 mask0 = 1 << i;
+            U32 mask1 = 1 << (i + 1);
+
+            if (p->pressed & mask0)
+                p->down_tmr[0] = 0.0f;
+            else if (p->released & mask0)
+                p->up_tmr[0] = 0.0f;
+
+            if (p->on & mask0)
+                p->down_tmr[0] += time_passed;
+            else
+                p->up_tmr[0] += time_passed;
+
+            if (p->pressed & mask1)
+                p->down_tmr[1] = 0.0f;
+            else if (p->released & mask1)
+                p->up_tmr[1] = 0.0f;
+
+            if (p->on & mask1)
+                p->down_tmr[1] += time_passed;
+            else
+                p->up_tmr[1] += time_passed;
+
+            p = (_tagxPad*)(p->value + 8);
+        }
+
+        if (p->flags & 0x10)
+        {
+            if (!(p->on & (0x10 | 0x40 | 0x80 | 0x20)))
+            {
+                p->d_timer = 0.0f;
+            }
+            else
+            {
+                p->d_timer -= time_passed;
+                if (p->d_timer <= 0.0f)
+                {
+                    p->d_timer = 0.35f;
+
+                    if (p->on & 0x10)
+                        p->pressed |= 0x10;
+                    else if (p->on & 0x40)
+                        p->pressed |= 0x40;
+
+                    if (p->on & 0x80)
+                        p->pressed |= 0x80;
+                    else if (p->on & 0x20)
+                        p->pressed |= 0x20;
+                }
+            }
+        }
+
+        return 1;
+    }
+
+    return 0;
+}
+
+void xPadNormalizeAnalog(_tagxPad& pad, S32 inner_zone, S32 outer_zone)
+{
+    _tagPadAnalog* src = &pad.analog1;
+
+    for (S32 i = 0; i < 2; i++, src++)
+    {
+        analog_data* data = &pad.analog[i];
+        S8 x = src->x;
+        F32 normX = 0.0f;
+
+        if (x <= 1)
+        {
+            if ((x <= -inner_zone) && (-outer_zone <= x))
+            {
+                normX = F32(x + inner_zone) / F32(outer_zone - inner_zone);
+            }
+        }
+        else if ((inner_zone <= x) && (x <= outer_zone))
+        {
+            normX = F32(x - inner_zone) / F32(outer_zone - inner_zone);
+        }
+        data->offset.x = normX;
+
+        S8 y = src->y;
+        F32 normY = 0.0f;
+        if (y <= 1)
+        {
+            if ((y <= -inner_zone) && (-outer_zone <= y))
+            {
+                normY = F32(y + inner_zone) / F32(outer_zone - inner_zone);
+            }
+        }
+        else if ((inner_zone <= y) && (y <= outer_zone))
+        {
+            normY = F32(y - inner_zone) / F32(outer_zone - inner_zone);
+        }
+        data->offset.y = normY;
+
+        if ((data->offset.x == 0.0f) && (data->offset.y == 0.0f))
+        {
+            data->mag = 0.0f;
+            data->dir.x = 1.0f;
+            data->dir.y = 0.0f;
+            data->ang = 0.0f;
+        }
+        else
+        {
+            if (data->offset.x > 1.0f)
+                data->offset.x = 1.0f;
+            else if (data->offset.x < -1.0f)
+                data->offset.x = -1.0f;
+
+            if (data->offset.y > 1.0f)
+                data->offset.y = 1.0f;
+            else if (data->offset.y < -1.0f)
+                data->offset.y = -1.0f;
+
+            F32 mag = data->offset.x * data->offset.x + data->offset.y * data->offset.y;
+
+            if (mag >= 0.0f)
+            {
+                if (!isinf(mag))
+                {
+                    F32 inv_sqrt = 1.0 / sqrt(mag);
+                    F32 val = -(inv_sqrt * inv_sqrt * mag - 3.0f) * inv_sqrt * 0.5f;
+                    mag = 100000.0f;
+                    if (val > 0.0000099999997f)
+                    {
+                        mag = 1.0f / val;
+                    }
+                }
+            }
+
+            data->mag = mag;
+
+            F32 inv_mag = 1.0f / data->mag;
+            data->dir.x = data->offset.x * inv_mag;
+            data->dir.y = data->offset.y * inv_mag;
+
+            data->ang = xAngleClampFast(atan2(data->dir.y, data->dir.x));
+        }
+    }
 }

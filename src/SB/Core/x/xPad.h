@@ -62,7 +62,7 @@ struct _tagxPad
     _tagPadAnalog analog2;
     _tagPadState state;
     U32 flags;
-    _tagxRumble rumble_head;
+    //_tagxRumble rumble_head;
     S16 port;
     S16 slot;
     _tagiPad context;
