@@ -44,6 +44,22 @@
 #include <rtslerp.h>
 #include <dolphin/os.h>
 
+struct ThreadParam
+{
+    S32 status;
+    void (*entry)(void*);
+    void* stack;
+    S32 stackSize;
+    void* gpReg;
+    S32 initPriority;
+    S32 currentPriority;
+    U32 attr;
+    U32 option;
+    S32 waitType;
+    S32 waitId;
+    S32 wakeupCount;
+};
+
 void iFuncProfileFuncs(int, int, float);
 
 #endif

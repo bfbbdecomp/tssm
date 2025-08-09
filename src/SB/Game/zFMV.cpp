@@ -18,7 +18,7 @@ zFMVFile zFMVFileTable[] = {
     { eFMVFile_HeavyIronLOGO, "", 0 }, //
     { eFMVFile_NickMovieLOGO, "", 0 }, //
     { eFMVFile_AttractMode, "", 0 }, //
-    // // { eFMVFile_OXMESRB, "" }, //
+    //{ eFMVFile_OXMESRB, "", 0 }, ////
     { eFMVFile_Pwr_SB_Karate2, "", 0 }, //
     { eFMVFile_Pwr_SB_Bash1, "", 0 }, //
     { eFMVFile_Pwr_SB_Bash2, "", 0 }, //
@@ -62,7 +62,7 @@ zFMVFile zFMVFileTable[] = {
     { eFMVFile_Trailer2, "", 0 }, //
     { eFMVFile_Trailer3, "", 0 }, //
     { eFMVFile_Pwr_Wagon, "", 0 }, //
-    // //{ eFMVFileCount, "" }, //
+    //{ eFMVFileCount, "", 0 }, ////
 };
 
 U32 zFMVPlay(char* filename, U32 buttons, F32 time, U32 unk0, bool skippable, bool lockController)
@@ -70,25 +70,9 @@ U32 zFMVPlay(char* filename, U32 buttons, F32 time, U32 unk0, bool skippable, bo
     char fullname[64];
     U32 ret;
 
-    if (filename == NULL)
-    {
-        return 1;
-    }
+    //iFMVPlay(fullname, buttons, time, skippable, lockController);
 
-    while (*filename == '/' || *filename == '\\')
-    {
-        filename++;
-    }
-
-    sprintf(fullname, "%s%s", filename, ".bik");
-    xSndSuspend();
-    _GameOstrich old = zGameGetOstrich();
-    zGameSetOstrich(eGameOstrich_PlayingMovie);
-    ret = iFMVPlay(fullname, buttons, time, skippable, lockController);
-    zGameSetOstrich(old);
-    xSndResume();
-
-    return ret;
+    return;
 }
 
 char* zFMVFileGetName(eFMVFile fileEnum)
@@ -104,13 +88,16 @@ char* zFMVFileGetName(eFMVFile fileEnum)
     return NULL;
 }
 
-char* zFMVFileGetFile(eFMVFile fileEnum) // Not Ported
+zFMVFile* zFMVFileGetFile(eFMVFile fmvId)
 {
-    for (S32 i = 0; i < eFMVFileCount; i++)
+    // eFMVFileCount is currently 101, ASM says this should be 49
+    // Turning this into a magic number for now
+    S32 i;
+    for (S32 i = 0; i < 49; i++)
     {
-        if (fileEnum == zFMVFileTable[i].fmvCode)
+        if (fmvId == zFMVFileTable[i].fmvCode)
         {
-            return zFMVFileTable[i].fileName;
+            return (zFMVFile*)zFMVFileTable[i].fileName;
         }
     }
 

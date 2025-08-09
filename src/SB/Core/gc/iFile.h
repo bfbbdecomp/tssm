@@ -14,6 +14,12 @@ enum IFILE_READSECTOR_STATUS
     IFILE_RDSTAT_EXPIRED
 };
 
+enum xFileDriveType
+{
+    XFILE_DRIVE_CDVD,
+    XFILE_DRIVE_CONSOLE_HD
+};
+
 #ifdef GAMECUBE
 struct tag_iFile
 {

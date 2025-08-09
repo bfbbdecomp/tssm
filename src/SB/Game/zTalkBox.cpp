@@ -2,28 +2,51 @@
 
 #include <types.h>
 
-// DIRECTLY PORTED FROM BFBB
-
 namespace
 {
-    struct SharedTalkboxState
-    {
-        void* padding[2]; // FIXME: variables not verified
-        ztalkbox* active;
-    };
 
-    SharedTalkboxState shared; // again, ported from battle, probably not correct
+    shared_type shared;
 } // namespace
 
-void* ztalkbox::permit(U32 r3, U32 r4)
+void ztalkbox::permit(U32 add_flags, U32 remove_flags)
 {
-    return 0;
+    shared.permit &= ~add_flags;
+    shared.permit |= (U32)this;
 }
 
 ztalkbox* ztalkbox::get_active()
 {
     return shared.active;
 }
+
+void ztalkbox::reset_all()
+{
+}
+
+namespace
+{
+
+    struct state_type
+    {
+        state_enum type;
+
+        void start();
+        void stop();
+    };
+
+    void state_type::start()
+    {
+    }
+
+    void stop()
+    {
+    }
+
+    void state_type::stop()
+    {
+    }
+
+} // namespace
 
 void ztalkbox::hide()
 {
@@ -36,4 +59,16 @@ void ztalkbox::hide()
     {
         quit_box->deactivate();
     }
+}
+
+void ztalkbox::stop_talk()
+{
+    if ((ztalkbox*)shared.active->flag.visible == this)
+    {
+        stop();
+    }
+}
+
+namespace
+{
 }

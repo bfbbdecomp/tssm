@@ -1,9 +1,9 @@
-#ifndef BFBB_TYPES_H
-#define BFBB_TYPES_H
+#ifndef TSSM_TYPES_H
+#define TSSM_TYPES_H
 
 #include "macros.h"
 
-// Note: only include this header inside BFBB-related headers/source code files.
+// Note: only include this header inside TSSM-related headers/source code files.
 // Don't include this in any RenderWare, system, bink, etc. files
 
 #ifdef GAMECUBE
@@ -85,6 +85,12 @@ typedef wchar_t wint_t;
 
 #define nullptr 0
 #define null 0
+
+#ifdef __MWERKS__
+#define ALIGNB(a) __attribute__((aligned(a)))
+#else
+#define ALIGNB(a)
+#endif
 
 #ifndef NULL
 #define NULL 0

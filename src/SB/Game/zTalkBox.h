@@ -9,35 +9,17 @@
 #include "xBase.h"
 #include "zFX.h"
 
-// DIRECTLY PORTED FROM BFBB
+enum query_enum
+{
+    Q_SKIP,
+    Q_YESNO
+};
 
 struct xEntNPCAssetIN : xEntNPCAsset
 {
     U32 navigation_mesh_id;
     U32 settings;
 };
-
-// // Lives here temporarily
-// struct base : xEnt, xFactoryInst
-// {
-//     S16 bound_bone;
-//     U16 sound_id_offset;
-//     U16 global_parameters_size;
-//     U16 local_parameters_size;
-//     U32 type;
-//     xModelAssetParam* global_parameters;
-//     xModelAssetParam* local_parameters;
-//     union
-//     {
-//         xMovePoint* movepoint;
-//         U32 movepoint_asset_id;
-//     };
-//     xEntNPCAssetIN* npc_asset;
-//     xModelAssetInfo* model_asset;
-//     F32 shadow_strength;
-//     F32 shadow_cache_fudge_factor;
-//     xVec3 bound_offset;
-// };
 
 struct ztalkbox : xBase
 {
@@ -116,8 +98,9 @@ struct ztalkbox : xBase
     U32 triggerPads;
     base* npc;
 
-    void* permit(unsigned int, unsigned int);
+    void permit(U32, U32);
     ztalkbox* get_active();
+    void reset_all();
     void MasterLoveSlave(xBase* slave, S32 starting);
     void hide();
     void show();
@@ -134,6 +117,157 @@ struct state_type
     state_enum type;
 
     void start();
+};
+
+struct jot;
+
+struct callback
+{
+    void (*render)(jot&, xtextbox&, F32, F32);
+    void (*layout_update)(jot&, xtextbox&, xtextbox&);
+    void (*render_update)(jot&, xtextbox&, xtextbox&);
+};
+
+struct split_tag
+{
+    substr tag;
+    substr name;
+    substr action;
+    substr value;
+};
+
+struct tag_type
+{
+    substr name;
+    void (*parse_tag)(jot&, xtextbox&, xtextbox&, split_tag&);
+    void (*reset_tag)(jot&, xtextbox&, xtextbox&, split_tag&);
+    void* context;
+};
+
+struct jot
+{
+    substr s;
+
+    struct
+    {
+        // Offset: 0x8
+        bool invisible : 1; // bit 24
+        bool ethereal : 1; // bit 25
+        bool merge : 1; // bit 26
+        bool word_break : 1; // bit 27
+        bool word_end : 1; // bit 28
+        bool line_break : 1; // bit 29
+        bool stop : 1; // bit 30
+        bool tab : 1; // bit 31
+
+        // Offset: 0x9
+        bool insert : 1; // bit 24
+        bool dynamic : 1; // bit 25
+        bool page_break : 1; // bit 26
+        bool stateful : 1; // bit 27
+        U16 dummy : 4; // bits 28-31
+    } flag;
+    // Offset: 0xC
+    U16 context_size;
+
+    // Offset: 0x10
+    void* context;
+    basic_rect<F32> bounds;
+    basic_rect<F32> render_bounds;
+    callback* cb;
+    tag_type* tag;
+
+    void intersect_flags(const jot& other);
+    void reset_flags();
+};
+
+struct jot_line
+{
+    basic_rect<F32> bounds;
+    F32 baseline;
+    U32 first;
+    U32 last;
+    U8 page_break;
+};
+
+struct layout
+{
+    xtextbox tb;
+    jot _jots[512];
+    U32 _jots_size;
+    jot_line _lines[128];
+    U32 _lines_size;
+    U8 context_buffer[1024];
+    U32 context_buffer_size;
+    U16 dynamics[64];
+    U32 dynamics_size;
+};
+
+struct _class_7
+{
+    struct
+    {
+        U8 time : 1;
+        U8 prompt : 1;
+        U8 sound : 1;
+        U8 event : 1;
+        U32 pad : 28;
+    };
+};
+
+struct wait_context
+{
+    _class_7 type;
+    U8 need;
+    F32 delay;
+    U32 event_mask;
+    query_enum query;
+};
+
+struct sound_queue
+{
+    iSndHandle _playing[5];
+    S32 head;
+    S32 tail;
+};
+
+struct trigger_pair
+{
+    ztalkbox* origin;
+    U32 event;
+};
+
+struct fixed_queue
+{
+    U32 _first;
+    U32 _last;
+    trigger_pair _buffer[33];
+};
+
+struct shared_type
+{
+    S32 flags;
+    U32 permit;
+    ztalkbox* active;
+    state_type* state;
+    state_type* states[5];
+    layout lt;
+    S32 begin_jot;
+    S32 end_jot;
+    S32 page_end_jot;
+    wait_context wait;
+    wait_context auto_wait;
+    U32 wait_event_mask;
+    //sound_queue<> sounds;
+    // Needs something similar to line "fixed_queue<trigger_pair, 33> triggered;
+    U8 allow_quit;
+    U8 quitting;
+    U8 delay_events;
+    callback* cb;
+    fixed_queue<trigger_pair, 33> triggered; // This line is just a guess. Could be incorect.
+    F32 volume;
+    base* speak_npc;
+    U32 speak_player;
 };
 
 #endif

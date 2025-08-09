@@ -19,9 +19,15 @@
 
 struct xVec3
 {
-    F32 x;
-    F32 y;
-    F32 z;
+    union
+    {
+        RwV3d m_RwV3d;
+        struct
+        {
+            F32 x, y, z;
+        };
+        F32 a[3];
+    };
 
     static const xVec3 m_Null;
     static const xVec3 m_UnitAxisX;

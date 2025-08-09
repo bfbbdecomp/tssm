@@ -1169,7 +1169,6 @@ void xGridIterClose(xGridIterator& it)
 
                     cell->next = NULL;
                     cell->head = NULL;
-                    cell->ingrid = 0;
                     cell->deleted = 0;
                     cell->gx = 0xFFFF;
                     cell->gz = 0xFFFF;
@@ -1232,7 +1231,6 @@ S32 xGridRemove(xGridBound* bound)
             *prev = curr->next;
             curr->next = NULL;
             curr->head = NULL;
-            curr->ingrid = 0;
             curr->deleted = 0;
             curr->gx = -1;
             curr->gz = -1;
@@ -3716,87 +3714,6 @@ static S32 setMaterialTextureRestore;
 S32 sSetPipeline;
 static RxPipeline* oldPipe;
 
-namespace
-{
-    namespace anim_coll
-    {
-        void reset(xEnt& ent)
-        {
-            if (!ent.anim_coll)
-            {
-                ent.anim_coll = (xEnt::anim_coll_data*)xMemAllocSize(sizeof(xEnt::anim_coll_data));
-                ent.anim_coll->flags = 0;
-                ent.anim_coll->verts = NULL;
-            }
-
-            xModelInstance& model = *ent.model;
-            xMat4x3& mat = *(xMat4x3*)model.Mat;
-            xEnt::anim_coll_data& ac = *ent.anim_coll;
-
-            if (!(ac.flags & 0x8))
-            {
-                switch (model.BoneCount)
-                {
-                case 1:
-                {
-                    ac.flags |= 0x1;
-                    ac.old_mat = mat;
-                    ac.new_mat = g_I3;
-                    break;
-                }
-                case 0:
-                {
-                    break;
-                }
-                default:
-                {
-                    ac.flags |= 0x2;
-                    ac.old_mat = mat;
-                    ac.new_mat = g_I3;
-
-                    xModelAnimCollStart(model);
-
-                    xBox& box = ent.bound.box.box;
-                    xVec3 size = box.upper - box.lower;
-                    F32 max_size = size.x;
-
-                    if (max_size < size.y)
-                    {
-                        max_size = size.y;
-                    }
-
-                    if (max_size < size.z)
-                    {
-                        max_size = size.z;
-                    }
-
-                    max_size += 1.0f;
-
-                    box.upper += max_size;
-                    box.lower -= max_size;
-
-                    model.Data->boundingSphere.radius *= 3.0f;
-                }
-                }
-            }
-        }
-
-        void refresh(xEnt& ent)
-        {
-            xEnt::anim_coll_data& ac = *ent.anim_coll;
-            xMat4x3& bone_mat = *(xMat4x3*)(ent.model->Mat + 1);
-
-            xMat4x3Mul((xMat4x3*)ent.model->Mat, &bone_mat, &ac.old_mat);
-
-            ac.new_mat = bone_mat;
-            bone_mat = g_I3;
-        }
-
-        void pre_move(xEnt& ent);
-        void post_move(xEnt& ent);
-    } // namespace anim_coll
-} // namespace
-
 void xEntInitShadow(xEnt& ent, xEntShadow& shadow)
 {
     ent.entShadow = &shadow;
@@ -4485,7 +4402,7 @@ void xEntMove(xEnt* ent, xScene* sc, F32 dt)
 {
     if (ent->moreFlags & 0x20)
     {
-        anim_coll::pre_move(*ent);
+        //anim_coll::pre_move(*ent);
     }
 
     ent->move(ent, sc, dt, ent->frame);
@@ -4519,7 +4436,7 @@ void xEntMove(xEnt* ent, xScene* sc, F32 dt)
 
     if (ent->moreFlags & 0x20)
     {
-        anim_coll::post_move(*ent);
+        //anim_coll::post_move(*ent);
     }
 }
 
@@ -4632,7 +4549,7 @@ void xEntEndUpdate(xEnt* ent, xScene* sc, F32 dt)
 
         if (ent->moreFlags & 0x20)
         {
-            anim_coll::refresh(*ent);
+            //anim_coll::refresh(*ent);
         }
 
         if (ent->endUpdate)

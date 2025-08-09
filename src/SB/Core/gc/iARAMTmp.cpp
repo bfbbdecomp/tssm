@@ -14,7 +14,7 @@ void* iARAMTmpInARAMTemp(void*)
 
 void* iARAMTmpFree(void*)
 {
-    return 0; //TO-DO
+    return;
 }
 
 U32 iARAMTmpMalloc(unsigned int)

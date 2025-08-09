@@ -1,18 +1,18 @@
 
 #include "zParticleSystemWaterfall.h"
 
-zParticleGenerator* pGen = 0;
+zParticleGenerator* pGen;
 
 void zParticleGeneratorWaterfallSplash::deactivate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfallSplash::activate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }
@@ -23,7 +23,7 @@ void zParticleGeneratorWaterfallSplash::reset()
     emitted = 0;
     locator.restart();
     locator.deactivate();
-    if (&flags != 0) // This arg needs fixed
+    if (flags & ~0xFFFFFFFE)
     {
         locator.activate(*asset, attach_to);
     }
@@ -41,14 +41,14 @@ void zParticleSystemWaterfallSplash::scene_enter()
 
 void zParticleGeneratorWaterfallMist::deactivate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfallMist::activate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }
@@ -59,7 +59,7 @@ void zParticleGeneratorWaterfallMist::reset()
     emitted = 0;
     locator.restart();
     locator.deactivate();
-    if (&flags != 0) // This arg needs fixed
+    if (flags & ~0xFFFFFFFE)
     {
         locator.activate(*asset, attach_to);
     }
@@ -77,14 +77,14 @@ void zParticleSystemWaterfallMist::scene_enter()
 
 void zParticleGeneratorWaterfall::deactivate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->deactivate();
     locator.deactivate();
 }
 
 void zParticleGeneratorWaterfall::activate()
 {
-    zParticleGenerator* pGen = 0;
+    zParticleGenerator* pGen;
     pGen->activate();
     locator.activate(*asset, attach_to); // Make const
 }
@@ -95,7 +95,7 @@ void zParticleGeneratorWaterfall::reset() // 87%
     emitted = 0;
     locator.restart();
     locator.deactivate();
-    if (&flags != 0) // This arg needs fixed
+    if (flags & ~0xFFFFFFFE)
     {
         locator.activate(*asset, attach_to);
     }

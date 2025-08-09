@@ -139,7 +139,7 @@ void xCutscene_Init(void* toc)
             (volatile int)xMemAlloc(gActiveHeap, sizeof(xModelBucket), 0);
         *(volatile int*)&sCutsceneFakeModel[i].Bucket[1] =
             (volatile int)*sCutsceneFakeModel[i].Bucket;
-        *(volatile int*)&sCutsceneFakeModel[i].PipeFlags = (volatile int)0x6530;
+        //*(volatile int*)&sCutsceneFakeModel[i].PipeFlags = (volatile int)0x6530;
         *(volatile float*)&sCutsceneFakeModel[i].RedMultiplier = (volatile float)1.0f;
         *(volatile float*)&sCutsceneFakeModel[i].GreenMultiplier = (volatile float)1.0f;
         *(volatile float*)&sCutsceneFakeModel[i].BlueMultiplier = (volatile float)1.0f;

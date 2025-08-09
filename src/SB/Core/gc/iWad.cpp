@@ -2980,6 +2980,19 @@ static U32 tbuffer[1024 + 8];
 static U32* buffer32;
 volatile U32 iFileSyncAsyncReadActive;
 
+U32 iFileGetSectorSize(xFileDriveType drive)
+{
+    // FIXME: Am I dumb? How does this not create jumps in objdiff?
+    if (drive != 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 32;
+    }
+}
+
 void iFileGetInfo(tag_xFile* file, U32* addr, U32* length)
 {
     if (addr)
@@ -3339,6 +3352,11 @@ void iEnvRender(iEnv* env, bool)
     lastEnv = env;
 }
 
+void iEnvSetup(iEnv* env)
+{
+    lastEnv = env;
+}
+
 void iEnvLightingBasics(iEnv*, xEnvAsset*)
 {
 }
@@ -3367,13 +3385,13 @@ void iEnvFree(iEnv* env)
     }
 }
 
-static RpAtomic* SetPipelineCB(RpAtomic* atomic, void* data)
+static void SetPipelineCB(RpAtomic* atomic, void* data)
 {
-    if (data)
+    if (data == 0)
     {
-        return RpAtomicSetPipeline(atomic, (RxPipeline*)data);
+        return;
     }
-    return 0;
+    (atomic->pipeline) = (RxPipeline*)data;
 }
 
 //                                                                                 iXF / iDraw
@@ -3730,7 +3748,63 @@ void iCSSoundSetup(xCutscene* csn)
 
 //                                                              iAsync
 
-// Easy file, will work on soon
+S32 asyncThread;
+bool asyncThreadDone = true;
+S64 asyncDirtyFrameList;
+
+void iAsyncResume()
+{
+    S32 unk0;
+
+    if ((asyncThreadDone == '\0') &&
+        (unk0 = OSIsThreadSuspended((OSThread*)+0x7fb57520), unk0 != 0))
+    {
+        OSResumeThread((OSThread*)+0x7fb57520);
+    }
+}
+
+void iAsyncSuspend()
+{
+    S32 unk0;
+
+    if ((asyncThreadDone == '\0') &&
+        (unk0 = OSIsThreadSuspended((OSThread*)+0x7fb57520), unk0 == 0))
+    {
+        OSSuspendThread((OSThread*)+0x7fb57520);
+    }
+}
+
+void iAsyncEndUpdate()
+{
+    OSEnableInterrupts();
+}
+
+void iAsyncBeginUpdate()
+{
+    OSDisableInterrupts();
+}
+
+void iAsyncTerminate()
+{
+    asyncThreadDone = true;
+}
+
+S32 iAsyncIsDone()
+{
+    return asyncThreadDone;
+}
+
+void iAsyncStart(void (*func)(void*))
+{
+    // FIXME: Very hacky and not all that close. Relocs need to be fixed.
+    ThreadParam threadParams;
+    asyncDirtyFrameList = (S64)&asyncDirtyFrameList;
+    threadParams.status = (S64)&asyncDirtyFrameList;
+    asyncThreadDone = 0;
+    OSCreateThread((OSThread*)-0x7fb57520, (OSThreadStartFunction)func, 0, (void*)0x80442278,
+                   0x2000, 10, 1);
+    OSResumeThread((OSThread*)-0x7fb57520);
+}
 
 //                                                              iAnimSKB
 
@@ -4067,7 +4141,7 @@ U32 iAnimBoneCount(void* RawData)
 
 F32 iAnimDuration(void* RawData)
 {
-    return iAnimDurationSKB((iAnimSKBHeader*)RawData);
+    //return iAnimDurationSKB((iAnimSKBHeader*)RawData);
 }
 
 void iAnimEval(void* RawData, F32 time, U32 flags, xVec3* tran, xQuat* quat)
@@ -4077,5 +4151,4 @@ void iAnimEval(void* RawData, F32 time, U32 flags, xVec3* tran, xQuat* quat)
 
 void iAnimInit()
 {
-    return;
 }

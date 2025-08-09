@@ -21,7 +21,7 @@ struct xEntAsset : xBaseAsset
     U8 subtype;
     U8 pflags;
     U8 moreFlags;
-    U8 pad;
+    //U8 pad;
     //U8 padding[3]; // this padding is added automatically. it should not be here
 
     // Offset: 0x10
@@ -68,17 +68,10 @@ struct xEntFrame
     xRot drot;
     xRot rot;
 
-    // Offset: 0xBC
-    xVec3 dpos;
-
-    // Offset: 0xC8
     xVec3 dvel;
-
-    // Offset: 0xD4
     xVec3 vel;
-
-    // Offset: 0xE0
     U32 mode;
+    xVec3 dpos;
 };
 
 struct xEntCollis
@@ -116,13 +109,6 @@ struct xEnt : xBase
 {
     struct anim_coll_data
     {
-        U32 flags;
-        U32 bones;
-        xMat4x3 old_mat;
-        xMat4x3 new_mat;
-        U32 verts_size;
-        xVec3* verts;
-        xVec3* normals;
     };
 
     xEntAsset* asset;

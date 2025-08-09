@@ -7,20 +7,18 @@
 
 struct xEnt;
 struct xQCData;
+struct xGrid;
 
 struct xGridBound
 {
     void* data;
     U16 gx;
     U16 gz;
-
-    // Offset: 0x8
-    U8 ingrid;
     U8 oversize;
     U8 deleted;
     U8 gpad;
-
-    // Offset: 0xC
+    U8 pad;
+    xGrid* grid;
     xGridBound** head;
     xGridBound* next;
 };
@@ -48,6 +46,7 @@ struct xGrid
     F32 maxr;
     xGridBound** cells;
     xGridBound* other;
+    S32 iter_active;
 };
 
 struct xGridIterator

@@ -67,6 +67,6 @@ struct zFMVFile
 
 U32 zFMVPlay(char* filename, U32 buttons, F32 time, U32 unk0, bool skippable, bool lockController);
 char* zFMVFileGetName(eFMVFile fileEnum);
-char* zFMVFileGetFile(eFMVFile fileEnum);
+zFMVFile* zFMVFileGetFile(eFMVFile fmvId);
 
 #endif

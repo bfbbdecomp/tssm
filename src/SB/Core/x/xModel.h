@@ -20,48 +20,54 @@ struct xModelPool
     xModelInstance* List;
 };
 
-struct xModelInstance // NEEDS UPDATED WITH TSSM DWARF
+struct xModelPipe
 {
+    U32 Flags;
+    U8 Layer;
+    U8 AlphaDiscard;
+    U16 PipePad;
+};
+
+struct xModelInstance
+{
+    struct _class_6
+    {
+        xVec3* verts;
+    };
+
     xModelInstance* Next;
     xModelInstance* Parent;
     xModelPool* Pool;
-    xAnimPlay* Anim; // 0xC
-
-    // Offset: 0x10
+    xAnimPlay* Anim;
     RpAtomic* Data;
-    U32 PipeFlags;
+    xModelPipe Pipe;
+    U8 InFrustum;
+    U8 TrueClip;
+    char sortBias; // int8
+    U8 modelpad;
     F32 RedMultiplier;
     F32 GreenMultiplier;
-
-    // Offset: 0x20
     F32 BlueMultiplier;
     F32 Alpha;
     F32 FadeStart;
     F32 FadeEnd;
-
-    // Offset: 0x30
     xSurface* Surf;
     xModelBucket** Bucket;
     xModelInstance* BucketNext;
     xLightKit* LightKit;
-
-    // Offset: 0x40
     void* Object;
-    U16 Flags; // 0x44
-    U8 BoneCount; // 0x46
-    U8 BoneIndex; // 0x47
-    U8* BoneRemap; // 0x48
-    RwMatrix* Mat; // 0x4C
-
-    // Offset: 0x50
+    U16 Flags;
+    U8 BoneCount;
+    U8 BoneIndex;
+    U8* BoneRemap;
+    RwMatrixTag* Mat;
     xVec3 Scale;
+    xBox animBound;
+    xBox combinedAnimBound;
     U32 modelID;
     U32 shadowID;
     RpAtomic* shadowmapAtomic;
-    struct
-    {
-        xVec3* verts;
-    } anim_coll;
+    _class_6 anim_coll;
 };
 
 // NOTE (Square): Theses are based on the access pattern found in zUI_Render.

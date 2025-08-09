@@ -15,14 +15,14 @@ struct xMat3x3
     U32 pad1;
     xVec3 at;
     U32 pad2;
-};
+} ALIGNB(16);
 
 // Size: 0x40
 struct xMat4x3 : xMat3x3
 {
     xVec3 pos;
     U32 pad3;
-};
+} ALIGNB(16);
 
 struct xSphere
 {
