@@ -1,0 +1,4 @@
+#ifndef ZNMETYPEBOSSDENNIS_H
+#define ZNMETYPEBOSSDENNIS_H
+
+#endif

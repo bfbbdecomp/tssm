@@ -2,14 +2,9 @@
 #define ZWADNME_H
 
 #include "zNMECommon.h"
-#include "iSnd.h"
 #include "xModelBlur.h"
 #include "zStreamedSound.h"
 #include "zBossCam.h"
-#include "xGroup.h"
-#include "xGlobals.h"
-#include "zGlobals.h"
-#include "zWadNME.h"
 
 enum en_denstage
 {

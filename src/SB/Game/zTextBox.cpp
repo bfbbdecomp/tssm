@@ -176,7 +176,7 @@ namespace
                 e.set_text(*(U32*)&argf[0]);
             }
 
-            e.activate();
+            //e.activate();
             break;
         }
         case eEventInvisible:
@@ -282,7 +282,7 @@ void ztextbox::render_backdrop()
     }
 }
 
-void ztextbox::activate()
+void ztextbox::activate(bool skipFirstFrame)
 {
     if (flag.active)
     {
@@ -290,7 +290,7 @@ void ztextbox::activate()
     }
 
     flag.active = true;
-    flag.visible = true;
+    flag.skipFrame = skipFirstFrame;
 
     prev = NULL;
     next = head_active;
@@ -311,7 +311,6 @@ void ztextbox::deactivate()
     }
 
     flag.active = false;
-    flag.visible = false;
 
     if (prev)
     {

@@ -5,7 +5,7 @@
 #include "xEnv.h"
 #include "iEnv.h"
 
-void zEnvEventCB(xBase* to, U32 toEvent, F32* toParam, xBase* toParamWidget);
+void zEnvEventCB(xBase* a0, xBase* a1, U32 a2, const F32* a3, xBase* a4, U32 a5);
 void zEnvLoad(_zEnv* ent, xSerial* s);
 void zEnvSave(_zEnv* ent, xSerial* s);
 void zEnvRender(xEnv* env);

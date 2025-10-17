@@ -1,0 +1,4 @@
+#ifndef ZNMETYPECRITBASIC_H
+#define ZNMETYPECRITBASIC_H
+
+#endif

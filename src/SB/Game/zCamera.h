@@ -1,7 +1,7 @@
 #ifndef ZCAMERA_H
 #define ZCAMERA_H
 
-#include "xCamera.h"
+#include "zCamSB.h"
 
 enum WallJumpViewState
 {
@@ -29,6 +29,13 @@ struct zFlyKey
     F32 matrix[12];
     F32 aperture[2];
     F32 focal;
+};
+
+struct zCamTweakLook
+{
+    F32 h;
+    F32 dist;
+    F32 pitch;
 };
 
 extern F32 zcam_overrot_tmr;
@@ -89,6 +96,22 @@ extern F32 zcam_overrot_velmin;
 extern F32 zcam_overrot_velmax;
 extern F32 zcam_overrot_tmanual;
 extern F32 zcam_mintgtheight;
+
+
+U8 zcam_centering;
+U8 zcam_lastcentering;
+bool sNearToggleEnabled;
+F32 sCamTweakLerp;
+F32 sCamTweakTime;
+F32 sCamTweakPitchCur;
+F32 sCamTweakPitch[2];
+F32 sCamTweakDistMultCur;
+F32 sCamTweakDistMult[2];
+static zCamTweakLook zcam_neartweak;
+static zCamTweakLook zcam_fartweak;
+F32 sCamD;
+F32 sCamH;
+F32 sCamPitch;
 
 void zCameraReset(xCamera* cam);
 void zCameraSetBbounce(S32 bbouncing);

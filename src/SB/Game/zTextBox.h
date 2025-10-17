@@ -9,6 +9,26 @@
 
 struct ztextbox : xBase
 {
+    /*
+    struct asset_type : xDynAsset
+    {
+	uint32 text;
+	basic_rect_0 bounds;
+	uint32 font;
+	_class_25 size;
+	_class_29 space;
+	color_type color;
+	_class_1 inset;
+	_enum_1 xjustify;
+	_enum_2 yjustify;
+	_enum_3 expand;
+	float32 max_height;
+	_class_14 backdrop;
+	color_type shadowColor;
+	float32 shadowOffsetX;
+	float32 shadowOffsetY;
+    };
+     */
     struct asset_type : xDynAsset
     {
         struct color_type
@@ -60,15 +80,17 @@ struct ztextbox : xBase
             color_type color;
             U32 texture;
         } backdrop;
+        color_type shadowColor;
+        F32 shadowOffsetX;
+        F32 shadowOffsetY;
     };
 
     struct
     {
-        bool active : 1; // bit 24
-        bool dirty : 1; // bit 25
-        bool show_backdrop : 1; // bit 26
-        bool visible : 1; // bit 27
-        bool hack_invisible : 1; // bit 28
+        bool active : 1;
+        bool dirty : 1;
+        bool show_backdrop : 1;
+        bool skipFrame : 1;
     } flag;
     asset_type* asset;
     xtextbox tb;
@@ -88,7 +110,7 @@ struct ztextbox : xBase
     void reset();
     void render();
     void render_backdrop();
-    void activate();
+    void activate(bool skipFirstFrame);
     void deactivate();
     void set_text(const char* s);
     void set_text(U32 id);

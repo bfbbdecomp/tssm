@@ -4,21 +4,10 @@
 #include <types.h>
 
 #include "xPartition.h"
-
 #include "zNPCMgr.h"
 #include "zNMECommon.h"
-#include "xordarray.h"
-#include "zNPCSpawner.h"
-#include "zNPCMessenger.h"
-#include "iTime.h"
-#include "xFX.h"
-#include "zFX.h"
-#include "zTextBox.h"
-#include "iSnd.h"
 #include "zGame.h"
-#include "zGameState.h"
 #include "zGameExtras.h"
-#include "zGoo.h"
 #include "zLight.h"
 #include "zLightning.h"
 #include "xDebug.h"
@@ -26,15 +15,7 @@
 #include "xCounter.h"
 #include "zFMV.h"
 #include "zUI.h"
-#include "zUIFont.h"
-#include "xSnd.h"
 #include "zMusic.h"
-#include "zGlobals.h"
-#include "xMath3.h"
-#include "xTRC.h"
-#include "zGrid.h"
-#include "xGrid.h"
-#include "xShadow.h"
 
 #include "xWad5.h"
 
