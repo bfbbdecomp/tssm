@@ -1,10 +1,12 @@
 #ifndef ZUI_H
 #define ZUI_H
 
-#include "zEnt.h"
-
-#include "xMgr.h"
+#include "xGroup.h"
 #include "xIni.h"
+#include "xMgr.h"
+#include "zConditional.h"
+#include "zEnt.h"
+#include "zTextbox.h"
 #include "zWadUI.h"
 
 struct zUIAsset : xDynAsset

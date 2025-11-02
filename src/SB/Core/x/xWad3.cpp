@@ -1611,7 +1611,7 @@ extern volatile U32 rndseed; // made this volatile so xrand() matches
 F32 xDangleClamp(F32 a)
 {
     F32 rad360 = 2 * PI;
-    F32 rem = xfmod(a, rad360);
+    F32 rem = fmod(a, 2 * PI_DOUBLE);
 
     if (rem >= PI)
     {
@@ -1646,7 +1646,7 @@ F32 xAngleClampFast(F32 a)
 F32 xAngleClamp(F32 a)
 {
     F32 rad360 = 2 * PI;
-    F32 rem = xfmod(a, rad360);
+    F32 rem = fmod(a, 2 * PI_DOUBLE);
 
     if (rem < 0.0f)
     {

@@ -750,7 +750,7 @@ void zSceneInit(U32 theSceneID, S32 reloadInProgress)
     xClimateInit(&gClimate);
     zSceneInitEnvironmentalSoundEffect();
 
-    sHackSmoothedUpdate = 1;
+    //sHackSmoothedUpdate = 1;
 
     //FootstepHackSceneEnter();
     zEntPickup_SceneEnter();

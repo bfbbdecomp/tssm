@@ -77,7 +77,7 @@ struct popper_data
     F32* weight;
 };
 
-extern U32 gFXSurfaceFlags;
+U32 gFXSurfaceFlags;
 
 void on_spawn_bubble_wall(const tweak_info& tweak);
 void zFX_SceneEnter(RpWorld* world);

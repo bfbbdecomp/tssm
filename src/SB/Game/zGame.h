@@ -4,12 +4,12 @@
 #include "zEntPlayer.h"
 #include "zGameState.h"
 
-extern eSNDCurrentPlayer gPendingPlayer;
-extern F32 sTimeElapsed;
-extern U32 gLevelChanged;
-extern U32 startPressed;
-extern U8 sHackSmoothedUpdate;
-extern U32 gBusStopIsRunning;
+//extern eSNDCurrentPlayer gPendingPlayer;
+F32 sTimeElapsed;
+U32 gLevelChanged;
+U32 startPressed = -1;
+//extern U8 sHackSmoothedUpdate;
+//extern U32 gBusStopIsRunning;
 
 enum _tagGameVidMode
 {
@@ -106,9 +106,8 @@ enum eGameWhereAmI
     eGameWhere_SetupPlayerEnd
 };
 
-extern iTime sTimeCurrent;
-extern iTime sTimeLast;
-extern F32 sTimeElapsed;
+iTime sTimeCurrent;
+iTime sTimeLast;
 
 void zGameSetupPlayer();
 void xDrawBegin();

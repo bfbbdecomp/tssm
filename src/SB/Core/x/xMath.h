@@ -22,10 +22,11 @@
 //     #define PI _771_1
 //     #define ONEEIGHTY _778_0
 #define PI 3.1415927f
+#define PI_DOUBLE 3.141592653589793
 #define ONEEIGHTY 180.0f
 
-#define DEG2RAD(x) ((PI) * (x) / (ONEEIGHTY))
-#define RAD2DEG(x) ((ONEEIGHTY) * (x) / (PI))
+#define DEG2RAD(x) ((PI_DOUBLE) * (x) / (ONEEIGHTY))
+#define RAD2DEG(x) ((ONEEIGHTY) * (x) / (PI_DOUBLE))
 
 #define FLOAT_MAX 1e38f
 #define FLOAT_MIN -1e38f

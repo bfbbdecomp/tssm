@@ -3,21 +3,21 @@
 
 #include <types.h>
 
+#include "xCounter.h"
+#include "xDebug.h"
 #include "xPartition.h"
-#include "zNPCMgr.h"
-#include "zNMECommon.h"
+#include "xWad5.h"
+
+#include "zFMV.h"
 #include "zGame.h"
 #include "zGameExtras.h"
+#include "zNPCMgr.h"
 #include "zLight.h"
 #include "zLightning.h"
-#include "xDebug.h"
 #include "zLOD.h"
-#include "xCounter.h"
-#include "zFMV.h"
-#include "zUI.h"
 #include "zMusic.h"
-
-#include "xWad5.h"
+#include "zNMECommon.h"
+#include "zUI.h"
 
 // Dwarf data says that most of these are only used here in zWad2.cpp
 

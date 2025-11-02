@@ -1,3 +1,4 @@
+#include "zUI.h"
 #include "zUICustom.h"
 
 unsigned char zUICustomConditionallyDisabled::PreRender()
