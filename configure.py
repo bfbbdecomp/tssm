@@ -227,11 +227,11 @@ cflags_runtime = [
 # dolphin library flags
 cflags_dolphin = [
     *cflags_base,
-    "-lang=c", 
+    "-lang=c",
     "-fp fmadd",
     "-fp_contract off",
     "-char signed",
-    "-str reuse", 
+    "-str reuse",
     "-common off",
     "-O4,p",
     #"-requireprotos"
@@ -240,11 +240,11 @@ cflags_dolphin = [
 # Renderware library flags
 cflags_renderware = [
     *cflags_base,
-    "-lang=c", 
+    "-lang=c",
     "-fp fmadd",
     "-fp_contract off",
     "-char signed",
-    "-str reuse", 
+    "-str reuse",
     "-common off",
     "-O4,p",
     #"-requireprotos"
@@ -265,7 +265,7 @@ cflags_tssm = [
     "-str reuse,pool,readonly",
     "-use_lmw_stmw on",
     '-pragma "cpp_extensions on"',
-    "-inline off",
+    "-inline auto",
     "-gccinc",
     "-i include/bink",
     "-i include/inline",
@@ -368,7 +368,7 @@ config.libs = [
             Object(NonMatching, "SB/Core/x/xModelBlur.cpp"),
             Object(NonMatching, "SB/Core/x/xCamera.cpp"),
             Object(NonMatching, "SB/Game/zWadNME.cpp"),
-            Object(NonMatching, "SB/Game/zWad1.cpp"), 
+            Object(NonMatching, "SB/Game/zWad1.cpp"),
             Object(NonMatching, "SB/Game/zWad2.cpp"),
             Object(NonMatching, "SB/Game/zWad3.cpp"),
             Object(NonMatching, "SB/Game/zWadEnt.cpp"),
@@ -398,7 +398,7 @@ config.libs = [
             Object(Matching, "SB/Core/gc/iException.cpp"),
             Object(NonMatching, "SB/Core/gc/iScrFX.cpp"),
             Object(NonMatching, "SB/Core/gc/iARAMTmp.cpp"),
-        
+
         ],
     },
  {
@@ -452,7 +452,7 @@ config.libs = [
         [
             Object(Matching, "dolphin/src/ar/ar.c"),
             Object(Matching, "dolphin/src/ar/arq.c")
-        ]        
+        ]
     ),
     DolphinLib(
         "ax",
@@ -484,7 +484,7 @@ config.libs = [
         "base",
         [
             Object(Matching, "dolphin/src/base/PPCArch.c")
-        ]        
+        ]
     ),
     DolphinLib(
         "card",
@@ -519,7 +519,7 @@ config.libs = [
             Object(NonMatching, "dolphin/src/dsp/dsp.c"),
             Object(Matching, "dolphin/src/dsp/dsp_debug.c"),
             Object(NonMatching, "dolphin/src/dsp/dsp_task.c")
-        ]        
+        ]
     ),
     DolphinLib(
         "dvd",
@@ -562,7 +562,7 @@ config.libs = [
         ]
     ),
     DolphinLib(
-        "mix", 
+        "mix",
         [
             Object(NonMatching, "dolphin/src/mix/mix.c")
         ]
@@ -683,14 +683,14 @@ config.libs = [
             Object(NonMatching, "MSL_C/MSL_Common/strtold.c"),
             Object(NonMatching, "MSL_C/MSL_Common/strtoul.c"),
             Object(Matching, "MSL_C/MSL_Common/float.c"),
-            Object(NonMatching, "MSL_C/MSL_Common/char_io.c"),  
-            Object(NonMatching, "MSL_C/MSL_Common/wchar_io.c"),  
+            Object(NonMatching, "MSL_C/MSL_Common/char_io.c"),
+            Object(NonMatching, "MSL_C/MSL_Common/wchar_io.c"),
             Object(NonMatching, "MSL_C/MSL_Common_Embedded/uart_console_io_gcn.c")
         ]
     ),
     mslLib(
         "fdlibm.PPCEABI.H",
-        [],          
+        [],
         [
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_acos.c"),
             Object(Matching, "MSL_C/MSL_Common_Embedded/Math/Double_precision/e_asin.c"),
@@ -747,7 +747,7 @@ config.libs = [
             Object(NonMatching, "debugger/embedded/MetroTRK/Processor/ppc/Generic/targimpl.c"),
             #Object(NonMatching, "debugger/embedded/MetroTRK/Processor/ppc/Export/targsupp.s"),
             Object(Matching, "debugger/embedded/MetroTRK/Processor/ppc/Generic/mpc_7xx_603e.c"),
-            Object(NonMatching, "debugger/embedded/MetroTRK/Os/dolphin/dolphin_trk.c"),   
+            Object(NonMatching, "debugger/embedded/MetroTRK/Os/dolphin/dolphin_trk.c"),
             Object(NonMatching, "debugger/embedded/MetroTRK/Os/dolphin/usr_put.c"),
             Object(NonMatching, "debugger/embedded/MetroTRK/Os/dolphin/dolphin_trk_glue.c"),
             Object(Matching, "debugger/embedded/MetroTRK/Os/dolphin/targcont.c"),
