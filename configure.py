@@ -376,7 +376,7 @@ config.libs = [
             Object(NonMatching, "SB/Game/zWadUI.cpp"),
             Object(NonMatching, "SB/Game/zMain.cpp"),
             Object(NonMatching, "SB/Game/zTalkBox.cpp"),
-            Object(NonMatching, "SB/Game/zTaskBox.cpp", extra_cflags=["-inline off"]),
+            Object(NonMatching, "SB/Game/zTaskBox.cpp"),
             Object(NonMatching, "SB/Game/zSmoke.cpp"),
             Object(NonMatching, "SB/Game/zSplash.cpp"),
             Object(NonMatching, "SB/Game/zExplosion.cpp"),
