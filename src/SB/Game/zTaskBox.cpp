@@ -85,6 +85,8 @@ void ztaskbox::talk_callback::reset(ztaskbox& task)
     this->answer = ANSWER_CONTINUE;
 }
 
+// This function matches better with `-inline auto`
+// but most functions in this file prefer it off
 void ztaskbox::stop_talk()
 {
     ztaskbox* curr = this->current;
