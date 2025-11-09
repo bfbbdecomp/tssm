@@ -20,10 +20,12 @@ void zNMEDennis::MeterRender()
 {
 }
 
+#pragma inline_depth(0)
 void zNMEDennis::RenderHud()
 {
     zNMEDennis::MeterRender();
 }
+#pragma inline_depth(5)
 
 S32 zNMEDennis::DfltVulnFlags()
 {

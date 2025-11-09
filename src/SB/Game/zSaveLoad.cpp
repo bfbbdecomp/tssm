@@ -1237,6 +1237,7 @@ S32 zSaveLoad_CardCheckSlotEmpty(S32 cardNumber, S32 gameNumber)
     return 1;
 }
 
+#pragma inline_depth(0)
 S32 zSaveLoad_CardCheckGameSlot(S32 cardNumber, S32 gameNumber, S32 mode)
 {
     if (mode == 1)
@@ -1248,6 +1249,7 @@ S32 zSaveLoad_CardCheckGameSlot(S32 cardNumber, S32 gameNumber, S32 mode)
         return zSaveLoad_CardCheckSlotOverwrite(cardNumber, gameNumber);
     }
 }
+#pragma inline_depth(5)
 
 S32 zSaveLoad_CardCheckGames(S32 cardNumber, S32 mode)
 {
@@ -1293,6 +1295,7 @@ S32 zSaveLoad_CardCheckSpace(S32 cardNumber, S32 mode)
     return 1;
 }
 
+#pragma inline_depth(0)
 S32 zSaveLoad_CardCheckValid(S32 cardNumber, S32 mode)
 {
     if (mode == 1)
@@ -1304,6 +1307,7 @@ S32 zSaveLoad_CardCheckValid(S32 cardNumber, S32 mode)
         return zSaveLoad_CardCheckSpace(cardNumber, mode);
     }
 }
+#pragma inline_depth(5)
 
 S32 zSaveLoad_CardCheckFormatted(S32 cardNumber, S32 mode)
 {
