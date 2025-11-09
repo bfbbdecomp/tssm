@@ -4711,12 +4711,14 @@ namespace
         ent.pflags = 0x4;
     }
 
+#pragma inline_depth(0)
     void drop_stacked_entity(xEnt& ent)
     {
         ent.pflags = 0x4;
 
         dismount_stacked_entity(ent);
     }
+#pragma inline_depth(5)
 
     void stop_stacked_entity(xEnt& ent)
     {

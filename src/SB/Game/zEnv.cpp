@@ -140,7 +140,9 @@ void zEnvInit(_zEnv* env, xEnvAsset* easset)
     }
 }
 
+#pragma inline_depth(0)
 void zEnvInit(void* env, void* easset)
 {
     zEnvInit((_zEnv*)env, (xEnvAsset*)easset);
 }
+#pragma inline_depth(5)

@@ -385,6 +385,7 @@ static void _xCameraUpdate(xCamera* cam, F32 dt)
     // lol nope
 }
 
+#pragma inline_depth(0)
 void xCameraUpdate(xCamera* cam, F32 dt)
 {
     S32 i;
@@ -402,6 +403,7 @@ void xCameraUpdate(xCamera* cam, F32 dt)
         _xCameraUpdate(cam, sdt);
     }
 }
+#pragma inline_depth(5)
 
 void SweptSphereHitsCameraEnt(xScene*, xRay3* ray, xQCData* qcd, xEnt* ent, void* data)
 {
