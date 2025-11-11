@@ -423,6 +423,7 @@ static S32 iSG_mc_fclose(st_ISG_MEMCARD_DATA* mcdata)
     return iSG_mc_fclose(mcdata, NULL);
 }
 
+// Inlining issue
 static S32 iSG_mc_fopen(st_ISG_MEMCARD_DATA* mcdata, const char* fname, S32 fsize,
                         en_ISG_IOMODE mode, en_ASYNC_OPERR* operr)
 {
@@ -857,7 +858,7 @@ static S32 iSG_bnr_unpack(st_ISG_TPL_TEXPALETTE* tpl)
     return iSG_tpl_unpack(tpl);
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 static S32 iSG_load_icondata()
 {
     g_rawicon = (st_ISG_TPL_TEXPALETTE*)iFileLoad("/SBGCIcon.tpl", NULL, &g_iconsize);
@@ -867,7 +868,6 @@ static S32 iSG_load_icondata()
 
     return g_rawicon && (S32)g_iconsize && g_rawbanr && (S32)g_banrsize ? 1 : 0;
 }
-#pragma inline_depth(5)
 
 static S32 iSG_get_finfo(st_ISG_MEMCARD_DATA* mcdata, const char* dpath)
 {
@@ -1518,12 +1518,11 @@ char* iSGFileModDate(st_ISGSESSION* isgdata, const char* fname, S32* sec, S32* m
     return datestr;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 char* iSGFileModDate(st_ISGSESSION* isgdata, const char* fname)
 {
     return iSGFileModDate(isgdata, fname, NULL, NULL, NULL, NULL, NULL, NULL);
 }
-#pragma inline_depth(5)
 
 static S32 iSG_get_fsize(st_ISG_MEMCARD_DATA* mcdata, const char* param2)
 {
@@ -1563,7 +1562,7 @@ S32 iSGFileSize(st_ISGSESSION* isgdata, const char* fname)
     return ret;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 S32 iSGTgtHaveRoomStartup(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const char* dpath,
                           const char* fname, S32* bytesNeeded, S32* availOnDisk, S32* needFile)
 {
@@ -1637,9 +1636,8 @@ S32 iSGTgtHaveRoomStartup(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const cha
     }
     return (count >= 3) ? 0 : is_space;
 }
-#pragma inline_depth(5)
 
-#pragma inline_depth(0)
+// Inlining issue
 S32 iSGTgtHaveRoom(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const char* dpath,
                    const char* fname, S32* bytesNeeded, S32* availOnDisk, S32* needFile)
 {
@@ -1708,7 +1706,6 @@ S32 iSGTgtHaveRoom(st_ISGSESSION* isgdata, S32 tidx, S32 fsize, const char* dpat
 
     return (*bytesNeeded > *availOnDisk) ? 0 : is_space;
 }
-#pragma inline_depth(5)
 
 static S32 iSG_mc_exists(S32 slot)
 {
@@ -2000,7 +1997,7 @@ S32 iSGShutdown()
     return 1;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 S32 iSGStartup() // TO-DO - 92%
 {
     if (g_isginit++ != 0)
@@ -2014,7 +2011,6 @@ S32 iSGStartup() // TO-DO - 92%
         return g_isginit;
     }
 }
-#pragma inline_depth(5)
 
 //                                                                          iPar
 
@@ -2156,13 +2152,12 @@ extern U32 HeapSize;
 extern U32 mem_top_alloc;
 extern U32 mem_base_alloc;
 
-#pragma inline_depth(0)
+// Inlining issue
 void iMemExit()
 {
     free((void*)gMemInfo.DRAM.addr);
     gMemInfo.DRAM.addr = 0;
 }
-#pragma inline_depth(5)
 
 //                                                              I dont have a name for these yet
 
@@ -3347,7 +3342,7 @@ void iEnvEndRenderFX(iEnv*)
     }
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 void iEnvRender(iEnv* env, bool)
 {
     RwRenderStateSet(rwRENDERSTATESRCBLEND, (void*)rwBLENDSRCALPHA);
@@ -3364,7 +3359,6 @@ void iEnvRender(iEnv* env, bool)
 
     lastEnv = env;
 }
-#pragma inline_depth(5)
 
 void iEnvSetup(iEnv* env)
 {

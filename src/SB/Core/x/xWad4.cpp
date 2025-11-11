@@ -608,7 +608,7 @@ S32 xSGWriteData(st_XSAVEGAME_DATA* xsgdata, st_XSAVEGAME_WRITECONTEXT* wctxt, c
     return cnt;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 S32 xSG_cb_leader_load(void*, st_XSAVEGAME_DATA* original_xsgdata, st_XSAVEGAME_READCONTEXT* rctxt,
                        U32, S32)
 {
@@ -638,7 +638,6 @@ S32 xSG_cb_leader_svproc(void* cltdata, st_XSAVEGAME_DATA* original_xsgdata,
     xSGWriteData(original_xsgdata, wctxt, fundata, 1, 0x16);
     return 1;
 }
-#pragma inline_depth(5)
 
 S32 xSG_cb_leader_svinfo(void*, st_XSAVEGAME_DATA*, S32* cur_space, S32* max_fullgame)
 {
@@ -843,7 +842,6 @@ S32 xSGProcess(st_XSAVEGAME_DATA* xsgdata)
     return result;
 }
 
-
 S32 xSGSetup(st_XSAVEGAME_DATA* xsgdata, S32 gidx, char* label, S32 progress, iTime playtime,
              S32 thumbIconIdx)
 {
@@ -890,12 +888,11 @@ S32 xSGSetup(st_XSAVEGAME_DATA* xsgdata, S32 gidx, char* label, S32 progress, iT
     return result;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 S32 xSGSetup(st_XSAVEGAME_DATA* xsgdata)
 {
     return xSGSetup(xsgdata, 0, "nothing", -1, 0, 0);
 }
-#pragma inline_depth(5)
 
 S32 xSGAddLoadClient(st_XSAVEGAME_DATA* xsgdata, U32 clttag, void* cltdata,
                      S32 (*loadfunc)(void*, st_XSAVEGAME_DATA*, st_XSAVEGAME_READCONTEXT*, U32,
@@ -1279,7 +1276,7 @@ S32 xSGDone(st_XSAVEGAME_DATA* xsgdata)
     return result;
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 st_XSAVEGAME_DATA* xSGInit(en_SAVEGAME_MODE mode)
 {
     st_XSAVEGAME_DATA* xsgdata = &g_xsgdata;
@@ -1308,7 +1305,6 @@ st_XSAVEGAME_DATA* xSGInit(en_SAVEGAME_MODE mode)
     memset(&g_leaders, 0, sizeof(g_leaders));
     return xsgdata;
 }
-#pragma inline_depth(5)
 
 S32 xSGShutdown()
 {
@@ -2485,7 +2481,7 @@ void PKR_ReadDone(st_PACKER_READ_DATA* pr)
     g_loadlock &= ~(1 << lockid);
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 st_PACKER_READ_DATA* PKR_ReadInit(void* userdata, const char* pkgfile, U32 opts, S32* cltver,
                                   PKRAssetType* typelist, int)
 {
@@ -2553,7 +2549,6 @@ st_PACKER_READ_DATA* PKR_ReadInit(void* userdata, const char* pkgfile, U32 opts,
     tocbuf_RAW[0] = NULL;
     return pr;
 }
-#pragma inline_depth(5)
 
 S32 PKRLoadStep(S32)
 {

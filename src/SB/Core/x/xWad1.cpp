@@ -1150,7 +1150,7 @@ static en_BIO_ASYNC_ERRCODES AsyncReadStatus(st_FILELOADINFO* fli)
     return BFD_AsyncReadStatus(fli);
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 static S32 AsyncIRead(st_FILELOADINFO* fli, S32 offset, char* data, S32 size, S32 n)
 {
     return BFD_AsyncRead(fli, offset, data, size, n, LITTLE_ENDIAN);
@@ -1160,7 +1160,6 @@ static S32 AsyncMRead(st_FILELOADINFO* fli, S32 offset, char* data, S32 size, S3
 {
     return BFD_AsyncRead(fli, offset, data, size, n, BIG_ENDIAN);
 }
-#pragma inline_depth(5)
 
 static S32 ReadRaw(st_FILELOADINFO* fli, void* data, S32 size, S32 count)
 {
@@ -1492,7 +1491,7 @@ static S32 BFD_getLength(tag_xFile* bffp, void* xtradata)
     return iFileGetSize(bffp);
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 st_FILELOADINFO* xBinioLoadCreate(const char* filename, S32)
 {
     st_FILELOADINFO* fli = NULL;
@@ -1561,7 +1560,6 @@ st_FILELOADINFO* xBinioLoadCreate(const char* filename, S32)
 
     return fli;
 }
-#pragma inline_depth(5)
 
 //                                                  xGoal
 
@@ -1848,7 +1846,7 @@ void xAnimPlaySetup(xAnimPlay* play, void* object, xAnimTable* table, xModelInst
     xAnimPlaySetState(play->Single, table->StateList, 0.0f);
 }
 
-#pragma inline_depth(0)
+// Inlining issue
 xAnimPlay* xAnimPoolAlloc(xMemPool* pool, void* object, xAnimTable* table,
                           xModelInstance* modelInst)
 {
@@ -1860,7 +1858,6 @@ xAnimPlay* xAnimPoolAlloc(xMemPool* pool, void* object, xAnimTable* table,
 
     return play;
 }
-#pragma inline_depth(5)
 
 void xAnimPoolCB(xMemPool* pool, void* data)
 {

@@ -1,5 +1,3 @@
-#pragma inline_depth(0)
-
 #include "zTaskBox.h"
 
 #include "xEvent.h"
@@ -13,7 +11,8 @@
 
 // CODE PORTED DIRECTLY FROM BFBB
 
-namespace {
+namespace
+{
     ztaskbox* shared;
 }
 
@@ -89,10 +88,8 @@ void ztaskbox::talk_callback::reset(ztaskbox& task)
     this->answer = ANSWER_CONTINUE;
 }
 
-// This function matches better with `-inline auto`
-// but most functions in this file prefer it off,
-// though `auto` behaves with an inline_depth of 4.
-#pragma inline_depth(5)
+// Most functions in this file need `-inline off` to match, except for this one,
+// but `-inline auto` has a depth of 4, and this matches best with a depth of 5.
 void ztaskbox::stop_talk()
 {
     ztaskbox* curr = this->current;
@@ -126,7 +123,6 @@ void ztaskbox::stop_talk()
         shared = NULL;
     }
 }
-#pragma inline_depth(0)
 
 void ztaskbox::enable()
 {
