@@ -4,6 +4,7 @@ void zUIController_Init(zUIController*, zUIControllerAsset*)
 {
 }
 
+// Inlining issue
 void zUIController_Init(xBase&, xDynAsset&, unsigned long)
 {
     zUIController* UIControl = 0;

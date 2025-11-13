@@ -11,7 +11,10 @@
 
 // CODE PORTED DIRECTLY FROM BFBB
 
-extern ztaskbox* shared;
+namespace
+{
+    ztaskbox* shared;
+}
 
 void ztaskbox::load(const asset_type& a)
 {
@@ -85,6 +88,8 @@ void ztaskbox::talk_callback::reset(ztaskbox& task)
     this->answer = ANSWER_CONTINUE;
 }
 
+// Most functions in this file need `-inline off` to match, except for this one,
+// but `-inline auto` has a depth of 4, and this matches best with a depth of 5.
 void ztaskbox::stop_talk()
 {
     ztaskbox* curr = this->current;

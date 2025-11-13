@@ -1311,6 +1311,7 @@ static void DrawRing(xFXRing* m)
     // todo: uses int-to-float conversion
 }
 
+// Inlining issue
 void xFXRingRender()
 {
     S32 i;
@@ -4711,6 +4712,7 @@ namespace
         ent.pflags = 0x4;
     }
 
+    // Inlining issue
     void drop_stacked_entity(xEnt& ent)
     {
         ent.pflags = 0x4;
@@ -4745,6 +4747,7 @@ namespace
     }
 } // namespace
 
+// Inlining issue
 void xEntUpdate(xEnt* ent, xScene* sc, F32 dt)
 {
     xEntBeginUpdate(ent, sc, dt);

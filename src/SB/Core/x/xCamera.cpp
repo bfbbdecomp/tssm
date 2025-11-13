@@ -385,6 +385,7 @@ static void _xCameraUpdate(xCamera* cam, F32 dt)
     // lol nope
 }
 
+// Inlining issue
 void xCameraUpdate(xCamera* cam, F32 dt)
 {
     S32 i;

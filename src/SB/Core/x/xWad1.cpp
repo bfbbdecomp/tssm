@@ -1150,6 +1150,7 @@ static en_BIO_ASYNC_ERRCODES AsyncReadStatus(st_FILELOADINFO* fli)
     return BFD_AsyncReadStatus(fli);
 }
 
+// Inlining issue
 static S32 AsyncIRead(st_FILELOADINFO* fli, S32 offset, char* data, S32 size, S32 n)
 {
     return BFD_AsyncRead(fli, offset, data, size, n, LITTLE_ENDIAN);
@@ -1490,6 +1491,7 @@ static S32 BFD_getLength(tag_xFile* bffp, void* xtradata)
     return iFileGetSize(bffp);
 }
 
+// Inlining issue
 st_FILELOADINFO* xBinioLoadCreate(const char* filename, S32)
 {
     st_FILELOADINFO* fli = NULL;
@@ -1844,6 +1846,7 @@ void xAnimPlaySetup(xAnimPlay* play, void* object, xAnimTable* table, xModelInst
     xAnimPlaySetState(play->Single, table->StateList, 0.0f);
 }
 
+// Inlining issue
 xAnimPlay* xAnimPoolAlloc(xMemPool* pool, void* object, xAnimTable* table,
                           xModelInstance* modelInst)
 {
@@ -1919,7 +1922,7 @@ void xAnimPoolCB(xMemPool* pool, void* data)
     clone->Pool = pool;
 }
 
-#define ADD_4_BITS(x) (((x)&1) + (((x) >> 1) & 1) + (((x) >> 2) & 1) + (((x) >> 3) & 1))
+#define ADD_4_BITS(x) (((x) & 1) + (((x) >> 1) & 1) + (((x) >> 2) & 1) + (((x) >> 3) & 1))
 void xAnimPoolInit(xMemPool* pool, U32 count, U32 singles, U32 blendFlags, U32 effectMax)
 {
     effectMax += effectMax & 1;

@@ -2,6 +2,7 @@ void zUIUserString_Init(zUIUserString*, zUIUserStringAsset*)
 {
 }
 
+// Inlining issue
 void zUIUserString_Init(xBase&, xDynAsset&, unsigned long)
 {
     zUIUserString* zUIString = 0;

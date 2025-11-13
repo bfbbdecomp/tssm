@@ -140,6 +140,7 @@ void zEnvInit(_zEnv* env, xEnvAsset* easset)
     }
 }
 
+// Inlining issue
 void zEnvInit(void* env, void* easset)
 {
     zEnvInit((_zEnv*)env, (xEnvAsset*)easset);

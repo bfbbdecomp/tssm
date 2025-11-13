@@ -20,6 +20,7 @@ void zNMEDennis::MeterRender()
 {
 }
 
+// Inlining issue
 void zNMEDennis::RenderHud()
 {
     zNMEDennis::MeterRender();

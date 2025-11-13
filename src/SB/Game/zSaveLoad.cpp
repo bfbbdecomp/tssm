@@ -168,7 +168,6 @@ S32 xSGT_SaveInfoCB(void* vp, st_XSAVEGAME_DATA* xsgdata, S32* need, S32* most)
     return 1;
 }
 
-
 void zSaveLoad_DispatchCB(U32 dispatchEvent, const F32* toParam)
 {
     switch (dispatchEvent)
@@ -1237,6 +1236,7 @@ S32 zSaveLoad_CardCheckSlotEmpty(S32 cardNumber, S32 gameNumber)
     return 1;
 }
 
+// Inlining issue
 S32 zSaveLoad_CardCheckGameSlot(S32 cardNumber, S32 gameNumber, S32 mode)
 {
     if (mode == 1)
@@ -1293,6 +1293,7 @@ S32 zSaveLoad_CardCheckSpace(S32 cardNumber, S32 mode)
     return 1;
 }
 
+// Inlining issue
 S32 zSaveLoad_CardCheckValid(S32 cardNumber, S32 mode)
 {
     if (mode == 1)

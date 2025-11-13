@@ -608,13 +608,15 @@ S32 xSGWriteData(st_XSAVEGAME_DATA* xsgdata, st_XSAVEGAME_WRITECONTEXT* wctxt, c
     return cnt;
 }
 
+// Inlining issue
 S32 xSG_cb_leader_load(void*, st_XSAVEGAME_DATA* original_xsgdata, st_XSAVEGAME_READCONTEXT* rctxt,
                        U32, S32)
 {
     char fundata[32] = {};
     st_XSAVEGAME_LEADER discard = {};
-    xSGReadData(original_xsgdata, rctxt, discard.gameLabel, sizeof(st_XSAVEGAME_LEADER));
-    xSGReadData(original_xsgdata, rctxt, fundata, 0x16);
+    // TODO: Fix last two args in function signature
+    xSGReadData(original_xsgdata, rctxt, discard.gameLabel, 1, sizeof(st_XSAVEGAME_LEADER));
+    xSGReadData(original_xsgdata, rctxt, fundata, 1, 0x16);
     return 1;
 }
 
@@ -631,8 +633,9 @@ S32 xSG_cb_leader_svproc(void* cltdata, st_XSAVEGAME_DATA* original_xsgdata,
     leader.progress = xsg->progress;
     leader.thumbIconIdx = xsg->thumbIconIdx;
 
-    xSGWriteData(original_xsgdata, wctxt, leader.gameLabel, sizeof(st_XSAVEGAME_LEADER));
-    xSGWriteData(original_xsgdata, wctxt, fundata, 0x16);
+    // TODO: Fix last two args in function signature
+    xSGWriteData(original_xsgdata, wctxt, leader.gameLabel, 1, sizeof(st_XSAVEGAME_LEADER));
+    xSGWriteData(original_xsgdata, wctxt, fundata, 1, 0x16);
     return 1;
 }
 
@@ -885,6 +888,7 @@ S32 xSGSetup(st_XSAVEGAME_DATA* xsgdata, S32 gidx, char* label, S32 progress, iT
     return result;
 }
 
+// Inlining issue
 S32 xSGSetup(st_XSAVEGAME_DATA* xsgdata)
 {
     return xSGSetup(xsgdata, 0, "nothing", -1, 0, 0);
@@ -1272,6 +1276,7 @@ S32 xSGDone(st_XSAVEGAME_DATA* xsgdata)
     return result;
 }
 
+// Inlining issue
 st_XSAVEGAME_DATA* xSGInit(en_SAVEGAME_MODE mode)
 {
     st_XSAVEGAME_DATA* xsgdata = &g_xsgdata;
@@ -2476,6 +2481,7 @@ void PKR_ReadDone(st_PACKER_READ_DATA* pr)
     g_loadlock &= ~(1 << lockid);
 }
 
+// Inlining issue
 st_PACKER_READ_DATA* PKR_ReadInit(void* userdata, const char* pkgfile, U32 opts, S32* cltver,
                                   PKRAssetType* typelist, int)
 {
