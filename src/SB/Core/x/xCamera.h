@@ -191,6 +191,7 @@ struct xCamera : xBase
     F32 roll_ccv;
     F32 roll_csv;
     xVec4 frustplane[12];
+    F32 smoothOutwardSlidePos;
 };
 
 struct xBinaryCamera
@@ -293,6 +294,7 @@ struct xCam
     xCamOrientType orient_type;
     _class_0 coord;
     _class_1 orient;
+    U8 _padding[0x2c]; // until the anonymous union structs above are done
     xCamConfigCommon cfg_common;
     S32 group_index;
     S32 group_flags;

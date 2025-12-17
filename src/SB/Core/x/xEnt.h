@@ -184,7 +184,7 @@ xMat4x3* xEntGetFrame(const xEnt* ent);
 void xEntEnable(xEnt* ent);
 xVec3* xEntGetCenter(const xEnt* ent);
 xVec3* xEntGetPos(const xEnt* ent);
-U32 xEntIsVisible(const xEnt* ent);
+inline U32 xEntIsVisible(const xEnt* ent);
 void xEntHide(xEnt* ent);
 void xEntShow(xEnt* ent);
 void xEntInitShadow(xEnt& ent, xEntShadow& shadow);

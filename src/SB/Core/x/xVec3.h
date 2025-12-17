@@ -43,7 +43,7 @@ struct xVec3
     }
     // FIXME: This should not be declared. Declaring it causes the assignment operator for the
     //        anonymous struct "camera" in hook_asset to call it rather than just copy the vec members.
-    xVec3& operator=(const xVec3&);
+    //xVec3& operator=(const xVec3& v);
     xVec3 operator+(const xVec3&) const;
     xVec3 operator-(const xVec3&) const;
     xVec3 operator*(F32) const;

@@ -105,8 +105,9 @@ enum _xCollsIdx
 struct xScene;
 
 void xCollideInit(xScene* sc);
-S32 xSweptSphereToBox(xSweptSphere* sws, xBox* box, xMat4x3* mat);
-S32 xSweptSphereToModel(xSweptSphere* sws, RpAtomic* model, RwMatrix* mat);
+S32 xSweptSphereToOBB(xSweptSphere* sws, const xBox* box, const xMat4x3* mat);
+S32 xSweptSphereToBox(xSweptSphere& sws, const xBox& box);
+S32 xSweptSphereToModel(xSweptSphere* sws, RpAtomic* model, const RwMatrix* mat);
 S32 xSweptSphereToScene(xSweptSphere* sws, xScene* sc, xEnt* mover, U8 collType);
 void xSweptSpherePrepare(xSweptSphere* sws, xVec3* start, xVec3* end, F32 radius);
 void xSweptSphereGetResults(xSweptSphere* sws);
