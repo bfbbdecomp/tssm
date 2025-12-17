@@ -412,6 +412,41 @@ config.libs = [
             Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
         ],
     },
+    {
+
+        "lib": "FMOD",
+        "mw_version": config.linker_version,
+        "cflags": cflags_runtime,
+        "progress_category": "FMOD",  # str | List[str]
+        "objects": [
+            Object(NonMatching, "FMOD/src/fmusic.c"),
+            Object(NonMatching, "FMOD/src/format_fsb.c"),
+            Object(NonMatching, "FMOD/src/format_gcadpcm.c"),
+            Object(NonMatching, "FMOD/src/fsound.c"),
+            Object(NonMatching, "FMOD/src/fsound_3d.c"),
+            Object(NonMatching, "FMOD/src/fsound_device.c"),
+            Object(NonMatching, "FMOD/src/fsound_async.c"),
+            Object(NonMatching, "FMOD/src/fsound_channel.c"),
+            Object(NonMatching, "FMOD/src/fsound_dsp.c"),
+            Object(NonMatching, "FMOD/src/fsound_gc.c"),
+            Object(NonMatching, "FMOD/src/fsound_sample.c"),
+            Object(NonMatching, "FMOD/src/fsound_stream.c"),
+            Object(NonMatching, "FMOD/src/mixer.c"),
+            Object(NonMatching, "FMOD/src/fsound_stream_decode.c"),
+            Object(NonMatching, "FMOD/src/mixer_clipcopy.c"),
+            Object(NonMatching, "FMOD/src/music_formatfsb.c"),
+            Object(NonMatching, "FMOD/src/output_gc.c"),
+            Object(NonMatching, "FMOD/src/output_nosound.c"),
+            Object(NonMatching, "FMOD/src/sound_software.c"),
+            Object(NonMatching, "FMOD/src/sound_software_3d.c"),
+            Object(NonMatching, "FMOD/src/system_file.c"),
+            Object(NonMatching, "FMOD/src/system_memory.c"),
+            Object(NonMatching, "FMOD/src/system_misc_gc.c"),
+            Object(NonMatching, "FMOD/src/system_thread.c"),
+            Object(NonMatching, "FMOD/src/system_time.c"),
+            Object(NonMatching, "FMOD/src/system_string.c"),
+        ],
+    },
  {
         "lib": "binkngc",
         "mw_version": "GC/1.3.2",
@@ -774,10 +809,9 @@ config.libs = [
     RenderWareLib(
         "rpcollis",
         [
-            Object(NonMatching, "rwsdk/plugin/collis/ctgeom.c"),
-            Object(NonMatching, "rwsdk/plugin/collis/ctworld.c"),
-            Object(NonMatching, "rwsdk/plugin/collis/ctbsp.c"),
-            Object(NonMatching, "rwsdk/plugin/collis/rpcollis.c"),
+            Object(NonMatching, "rwsdk/plugin/rpcollis/ctdata.c"),
+            Object(NonMatching, "rwsdk/plugin/rpcollis/colldata.c"),
+            Object(NonMatching, "rwsdk/plugin/rpcollis/collquery.c"),
         ],
     ),
     RenderWareLib(
@@ -908,6 +942,7 @@ config.libs = [
             Object(NonMatching, "rwsdk/src/plcore/bavector.c"),
             Object(NonMatching, "rwsdk/src/plcore/resmem.c"),
             Object(NonMatching, "rwsdk/src/plcore/rwstring.c"),
+            Object(NonMatching, "rwsdk/src/plcore/rwgrp.c"),
             Object(NonMatching, "rwsdk/os/gcn/osintf.c"),
             Object(NonMatching, "rwsdk/src/babbox.c"),
             Object(NonMatching, "rwsdk/src/babincam.c"),
@@ -975,6 +1010,7 @@ config.progress_categories = [
     ProgressCategory("msl", "MSL"),
     ProgressCategory("RW", "Renderware SDK"),
     ProgressCategory("bink", "Bink SDK"),
+    ProgressCategory("FMOD", "FMOD SDK"),
 ]
 config.progress_each_module = args.verbose
 

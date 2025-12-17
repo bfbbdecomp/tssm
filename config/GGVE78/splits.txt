@@ -1333,62 +1333,62 @@ MWTrace.c:
 MWCriticalSection_gc.cpp:
 	.text       start:0x802B9814 end:0x802B986C
 
-fmusic.c:
+FMOD/src/fmusic.c:
 	.text       start:0x802B986C end:0x802BA764
 	.rodata     start:0x8037F010 end:0x8037F020
 	.sdata2     start:0x804B4818 end:0x804B4830
 
-format_fsb.c:
+FMOD/src/format_fsb.c:
 	.text       start:0x802BA764 end:0x802BBCDC
 	.rodata     start:0x8037F020 end:0x8037F030
 	.sdata2     start:0x804B4830 end:0x804B4840
 
-format_gcadpcm.c:
+FMOD/src/format_gcadpcm.c:
 	.text       start:0x802BBCDC end:0x802BC18C
 	.rodata     start:0x8037F030 end:0x8037F048
 
-fsound.c:
+FMOD/src/fsound.c:
 	.text       start:0x802BC18C end:0x802BCF50
 	.rodata     start:0x8037F048 end:0x8037F070
 	.sdata      start:0x804B05A8 end:0x804B05B0
 	.sbss       start:0x804B1C70 end:0x804B1C80
 	.sdata2     start:0x804B4840 end:0x804B4850
 
-fsound_3d.c:
+FMOD/src/fsound_3d.c:
 	.text       start:0x802BCF50 end:0x802BD3A4
 	.data       start:0x803BAE58 end:0x803BAF78
 	.sdata      start:0x804B05B0 end:0x804B05C0
 	.sbss       start:0x804B1C80 end:0x804B1C88
 	.sdata2     start:0x804B4850 end:0x804B4858
 
-fsound_device.c:
+FMOD/src/fsound_device.c:
 	.data       start:0x803BAF78 end:0x803BB258
 
-fsound_async.c:
+FMOD/src/fsound_async.c:
 	.text       start:0x802BD3A4 end:0x802BD70C
 	.bss        start:0x80464E38 end:0x80468E38
 
-fsound_channel.c:
+FMOD/src/fsound_channel.c:
 	.text       start:0x802BD70C end:0x802C14B8
 	.rodata     start:0x8037F070 end:0x8037F100
 	.sdata2     start:0x804B4858 end:0x804B4870
 
-fsound_dsp.c:
+FMOD/src/fsound_dsp.c:
 	.text       start:0x802C14B8 end:0x802C184C
 	.rodata     start:0x8037F100 end:0x8037F110
 
-fsound_gc.c:
+FMOD/src/fsound_gc.c:
 	.text       start:0x802C184C end:0x802C1F88
 	.rodata     start:0x8037F110 end:0x8037F120
 	.data       start:0x803BB258 end:0x803BB658
 	.sbss       start:0x804B1C88 end:0x804B1C90
 
-fsound_sample.c:
+FMOD/src/fsound_sample.c:
 	.text       start:0x802C1F88 end:0x802C4670
 	.rodata     start:0x8037F120 end:0x8037F140
 	.sdata2     start:0x804B4870 end:0x804B4880
 
-fsound_stream.c:
+FMOD/src/fsound_stream.c:
 	.text       start:0x802C4670 end:0x802C89AC
 	.rodata     start:0x8037F140 end:0x8037F1A0
 	.sdata      start:0x804B05C0 end:0x804B05C8
@@ -1396,22 +1396,22 @@ fsound_stream.c:
 	.sdata2     start:0x804B4880 end:0x804B48B8
 	.sbss2      start:0x804B5190 end:0x804B5198
 
-mixer.c:
+FMOD/src/mixer.c:
 	.rodata     start:0x8037F1A0 end:0x8037F308
 	.data       start:0x803BB658 end:0x803BB930
 
-fsound_stream_decode.c:
+FMOD/src/fsound_stream_decode.c:
 	.text       start:0x802C89AC end:0x802C8DB8
 
-mixer_clipcopy.c:
+FMOD/src/mixer_clipcopy.c:
 	.text       start:0x802C8DB8 end:0x802C9178
 
-music_formatfsb.c:
+FMOD/src/music_formatfsb.c:
 	.text       start:0x802C9178 end:0x802C9BCC
 	.rodata     start:0x8037F308 end:0x8037F330
 	.sdata      start:0x804B05C8 end:0x804B05D0
 
-output_gc.c:
+FMOD/src/output_gc.c:
 	.text       start:0x802C9BCC end:0x802CCD74
 	.rodata     start:0x8037F330 end:0x8037F428
 	.data       start:0x803BB930 end:0x803BB990
@@ -1420,24 +1420,24 @@ output_gc.c:
 	.sbss       start:0x804B1C98 end:0x804B1CF0
 	.sdata2     start:0x804B48B8 end:0x804B48D0
 
-output_nosound.c:
+FMOD/src/output_nosound.c:
 	.text       start:0x802CCD74 end:0x802CD288
 	.rodata     start:0x8037F428 end:0x8037F438
 	.data       start:0x803BB990 end:0x803BBA48
 	.sdata2     start:0x804B48D0 end:0x804B48D8
 
-sound_software.c:
+FMOD/src/sound_software.c:
 	.text       start:0x802CD288 end:0x802CFD64
 	.rodata     start:0x8037F438 end:0x8037F450
 	.data       start:0x803BBA48 end:0x803BBB48
 	.sbss       start:0x804B1CF0 end:0x804B1CF8
 	.sdata2     start:0x804B48D8 end:0x804B4928
 
-sound_software_3d.c:
+FMOD/src/sound_software_3d.c:
 	.text       start:0x802CFD64 end:0x802D059C
 	.sdata2     start:0x804B4928 end:0x804B4960
 
-system_file.c:
+FMOD/src/system_file.c:
 	.text       start:0x802D059C end:0x802D13BC
 	.rodata     start:0x8037F450 end:0x8037F460
 	.bss        start:0x80468F58 end:0x80469658
@@ -1445,26 +1445,26 @@ system_file.c:
 	.sbss       start:0x804B1CF8 end:0x804B1D20
 	.sdata2     start:0x804B4960 end:0x804B4968
 
-system_memory.c:
+FMOD/src/system_memory.c:
 	.text       start:0x802D13BC end:0x802D1EE0
 	.rodata     start:0x8037F460 end:0x8037F470
 
-system_misc_gc.c:
+FMOD/src/system_misc_gc.c:
 	.text       start:0x802D1EE0 end:0x802D2DB0
 	.rodata     start:0x8037F470 end:0x8037F4A8
 	.data       start:0x803BBB48 end:0x803BBBB0
 	.sdata      start:0x804B05E0 end:0x804B05E8
 	.sbss       start:0x804B1D20 end:0x804B1D28
 
-system_thread.c:
+FMOD/src/system_thread.c:
 	.text       start:0x802D2DB0 end:0x802D3264
 	.rodata     start:0x8037F4A8 end:0x8037F4B8
 
-system_time.c:
+FMOD/src/system_time.c:
 	.text       start:0x802D3264 end:0x802D3520
 	.sdata2     start:0x804B4968 end:0x804B4988
 
-system_string.c:
+FMOD/src/system_string.c:
 	.text       start:0x802D3520 end:0x802D3754
 
 dolphin/src/ai/ai.c:
@@ -1916,14 +1916,14 @@ OdemuExi2/DebuggerDriver.c:
 	.sdata      start:0x804B0750 end:0x804B0758
 	.sbss       start:0x804B2180 end:0x804B2198
 
-ctdata.c:
+rwsdk/plugin/rpcollis/ctdata.c:
 	.text       start:0x8030088C end:0x803011A4
 
-colldata.c:
+rwsdk/plugin/rpcollis/colldata.c:
 	.text       start:0x803011A4 end:0x80301604
 	.sbss       start:0x804B2198 end:0x804B21B0
 
-collquery.c:
+rwsdk/plugin/rpcollis/collquery.c:
 	.text       start:0x80301604 end:0x803036D0
 	.sdata2     start:0x804B4B18 end:0x804B4B30
 
@@ -2300,7 +2300,7 @@ rwsdk/src/plcore/bavector.c:
 rwsdk/src/plcore/resmem.c:
 	.text       start:0x80340DE0 end:0x80341020
 
-rwgrp.c:
+rwsdk/src/plcore/rwgrp.c:
 	.text       start:0x80341020 end:0x80341100
 	.bss        start:0x80486C50 end:0x80486C78
 	.sdata      start:0x804B0818 end:0x804B0820
