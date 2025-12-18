@@ -912,7 +912,7 @@ bink/src/sdk/dct.c:
 bink/src/sdk/bitplane.c:
 	.text       start:0x802A0960 end:0x802A1FAC
 
-ios.cpp:
+MSL_C/MSL_Common/ios.cpp:
 	extab       start:0x80005600 end:0x80005608
 	extabindex  start:0x80005700 end:0x8000570C
 	.text       start:0x802A1FAC end:0x802A2000
@@ -1309,28 +1309,28 @@ debugger/embedded/MetroTRK/Os/dolphin/target_options.c:
 debugger/embedded/MetroTRK/Export/mslsupp.c:
 	.text       start:0x802B8D0C end:0x802B8E84
 
-UDP_Stubs.c:
+debugger/embedded/MetroTRK/Os/dolphin/UDP_Stubs.c:
 	.text       start:0x802B8E84 end:0x802B8ECC
 
-main.c:
+gamedev/cust_connection/cc/exi2/GCN/EXI2_DDH_GCN/main.c:
 	.text       start:0x802B8ECC end:0x802B9210
 	.rodata     start:0x8037EE50 end:0x8037EF30
 	.bss        start:0x804640F8 end:0x80464918
 	.sbss       start:0x804B1C60 end:0x804B1C68
 
-CircleBuffer.c:
+gamedev/cust_connection/utils/common/CircleBuffer.c:
 	.text       start:0x802B9210 end:0x802B9478
 
-DupeCDir/main.c_1:
+gamedev/cust_connection/cc/exi2/GCN/EXI2_GDEV_GCN/main.c:
 	.text       start:0x802B9478 end:0x802B97C4
 	.rodata     start:0x8037EF30 end:0x8037F010
 	.bss        start:0x80464918 end:0x80464E38
 	.sbss       start:0x804B1C68 end:0x804B1C70
 
-MWTrace.c:
+gamedev/cust_connection/utils/common/MWTrace.c:
 	.text       start:0x802B97C4 end:0x802B9814
 
-MWCriticalSection_gc.cpp:
+gamedev/cust_connection/utils/gc/MWCriticalSection_gc.cpp:
 	.text       start:0x802B9814 end:0x802B986C
 
 FMOD/src/fmusic.c:
@@ -1963,7 +1963,7 @@ rwsdk/plugin/matfx/gcn/multiTexGcnPipe.c:
 rwsdk/plugin/matfx/gcn/multiTexGcn.c:
 	.text       start:0x8030B4D4 end:0x8030B53C
 
-nbtGen.c:
+rwsdk/plugin/matfx/gcn/nbtGen.c:
 	.text       start:0x8030B53C end:0x8030CEFC
 	.sdata2     start:0x804B4BF8 end:0x804B4C20
 
@@ -2059,7 +2059,7 @@ rwsdk/plugin/skin2/gcn/skinmatrixblend.c:
 rwsdk/plugin/skin2/gcn/skingcnasm.c:
 	.text       start:0x80318010 end:0x80318B14
 
-skinmatfxgcn.c:
+rwsdk/plugin/skin2/gcn/skinmatfxgcn.c:
 	.text       start:0x80318B14 end:0x80318E08
 
 rwsdk/plugin/skin2/gcn/skingcnm.c:
@@ -2223,7 +2223,7 @@ rwsdk/tool/anim/rtanim.c:
 	.sbss       start:0x804B22D0 end:0x804B22D8
 	.sdata2     start:0x804B4DC8 end:0x804B4DD0
 
-rtfsmgr.c:
+rwsdk/tool/fsyst/rtfsmgr.c:
 	.text       start:0x8033741C end:0x80337ADC
 	.bss        start:0x80486798 end:0x804867B0
 	.sdata      start:0x804B07D0 end:0x804B07E8
@@ -2233,13 +2233,13 @@ rwsdk/tool/intsec/rtintsec.c:
 	.text       start:0x80337ADC end:0x803390B4
 	.sdata2     start:0x804B4DD0 end:0x804B4DD8
 
-skinsplit.c:
+rwsdk/tool/sknsplit/skinsplit.c:
 	.text       start:0x803390B4 end:0x8033A8B4
 	.data       start:0x803C3BD0 end:0x803C3BE0
 	.bss        start:0x804867B0 end:0x80486BB0
 	.sdata2     start:0x804B4DD8 end:0x804B4DE0
 
-rtskinsp.c:
+rwsdk/tool/sknsplit/rtskinsp.c:
 	.text       start:0x8033A8B4 end:0x8033B170
 
 rwsdk/tool/slerp/rtslerp.c:
