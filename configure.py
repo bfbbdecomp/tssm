@@ -706,7 +706,7 @@ config.libs = [
             Object(Matching, "MSL_C/MSL_Common/errno.c"),
             Object(NonMatching, "MSL_C/MSL_Common/extras.c"),
             Object(NonMatching, "MSL_C/MSL_Common/file_io.c"),
-            Object(NonMatching, "MSL_C/MSL_Common/FILE_POS.c"),
+            Object(NonMatching, "MSL_C/MSL_Common/FILE_POS.C"),
             Object(NonMatching, "MSL_C/MSL_Common/ios.cpp"),
             Object(Matching, "MSL_C/MSL_Common/locale.c"),
             Object(NonMatching, "MSL_C/MSL_Common/mbstring.c"),
