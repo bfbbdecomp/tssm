@@ -64,15 +64,15 @@ zFMVFile zFMVFileTable[] = {
     { eFMVFile_Pwr_Wagon, "", 0 }, //
     //{ eFMVFileCount, "", 0 }, ////
 };
-
-U32 zFMVPlay(char* filename, U32 buttons, F32 time, U32 unk0, bool skippable, bool lockController)
+U32 zFMVPlay(const char* name, U32 buttons, F32 time, U32 uSubtitlesAID, bool skippable,
+             bool lockController)
 {
-    char fullname[64];
-    U32 ret;
+    U32 retval = 0;
+    //xSndEffect currentEffect;
 
     //iFMVPlay(fullname, buttons, time, skippable, lockController);
 
-    return;
+    return retval;
 }
 
 char* zFMVFileGetName(eFMVFile fileEnum)

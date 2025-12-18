@@ -1,8 +1,6 @@
 
 #include "zParticleSystemWaterfall.h"
 
-zParticleGenerator* pGen;
-
 void zParticleGeneratorWaterfallSplash::deactivate()
 {
     zParticleGenerator* pGen;
