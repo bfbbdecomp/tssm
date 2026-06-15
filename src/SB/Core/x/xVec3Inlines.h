@@ -2,14 +2,33 @@
 #define XVEC3INLINES_H
 
 #include "xVec3.h"
+#include "fake_tgmath.h"
 
-void xVec3Sub(xVec3* o, const xVec3* a, const xVec3* b);
+inline void xVec3Sub(xVec3* o, const xVec3* a, const xVec3* b)
+{
+    o->x = a->x - b->x;
+    o->y = a->y - b->y;
+    o->z = a->z - b->z;
+}
 void xVec3Cross(xVec3* o, const xVec3* a, const xVec3* b);
 void xVec3Inv(xVec3* o, const xVec3* v);
 void xVec3Copy(xVec3* o, const xVec3* v);
-F32 xVec3Length(const xVec3* v);
-void xVec3SMul(xVec3* o, const xVec3* v, F32 s);
-void xVec3Add(xVec3* o, const xVec3* a, const xVec3* b);
+inline F32 xVec3Length(const xVec3* v)
+{
+    return sqrtf(v->x * v->x + v->y * v->y + v->z * v->z);
+}
+inline void xVec3SMul(xVec3* o, const xVec3* v, F32 s)
+{
+    o->x = s * v->x;
+    o->y = s * v->y;
+    o->z = s * v->z;
+}
+inline void xVec3Add(xVec3* o, const xVec3* a, const xVec3* b)
+{
+    o->x = a->x + b->x;
+    o->y = a->y + b->y;
+    o->z = a->z + b->z;
+}
 void xVec3Init(xVec3* v, F32 _x, F32 _y, F32 _z);
 void xVec3AddTo(xVec3* o, const xVec3* v);
 void xVec3Lerp(xVec3* o, const xVec3* a, const xVec3* b, F32 t);

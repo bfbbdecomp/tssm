@@ -1,5 +1,24 @@
-// For some reason including this breaks the bitshift in zMenuPause
-//#include "zMenu.h"
+#include "iTime.h"
+#include "zGame.h"
+#include "zMain.h"
+#include "zMenu.h"
+
+//bool menu_fmv_played;
+S32 sFirstBoot = 1;
+//S32 logoTmr;
+F32 time_elapsed = 0.01f;
+F32 time_last;
+F32 time_current;
+F32 sAttractMode_timer;
+F32 sOneLiner_timer;
+//S32 promptSel;
+S32 card;
+//S32 var;
+//S32 fullCard;
+S32 sInMenu;
+//F32 ONELINER_WAITTIME;
+F32 holdTmr = 10.0f;
+U8 sAllowAttract;
 
 void zMenuAllowAtract(bool allowAttract)
 {
@@ -8,18 +27,11 @@ void zMenuAllowAtract(bool allowAttract)
 
 void zMenuPause(bool bPause)
 {
-    S64 time;
-    U32 Utime;
-
     if (bPause == FALSE)
     {
-        Utime = iTimeGet();
-        time = iTimeDiffSec((U64)Utime >> 0x20);
-        time_last = time - SECS_PER_VBLANK;
-        Utime = iTimeGet();
+        time_last = iTimeDiffSec(iTimeGet()) - SECS_PER_VBLANK;
+        sTimeLast = iTimeGet();
     }
-
-    sTimeLast = Utime >> 0x20;
 }
 
 S32 zMenuIsFirstBoot()

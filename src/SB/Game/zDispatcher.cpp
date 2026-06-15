@@ -12,6 +12,7 @@
 #include "zRumble.h"
 #include "zVar.h"
 #include "zGameState.h"
+#include "zGlobals.h"
 #include "xIni.h"
 
 extern st_ZDISPATCH_CONTEXT lbl_80254E00;
@@ -71,6 +72,7 @@ void zDispatcher_FindWorldTask(U32 sceneID, S32& world, S32& task)
 
 // PORTED DIRECTLY FROM BFBB
 // NEEDS A LOT OF WORK
+/*
 S32 ZDSP_elcb_event(xBase*, xBase* xb, U32 toEvent, const F32* toParam, xBase* toParamWidget)
 {
     st_ZDISPATCH_DATA* dspdata = (st_ZDISPATCH_DATA*)xb;
@@ -225,6 +227,7 @@ S32 ZDSP_elcb_event(xBase*, xBase* xb, U32 toEvent, const F32* toParam, xBase* t
     }
     return 1;
 }
+*/
 
 S32 ZDSP_doCommand(st_ZDISPATCH_DATA* dspdata, st_ZDISPATCH_CONTEXT* cmdCtxt)
 {

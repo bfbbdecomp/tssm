@@ -20,15 +20,15 @@ typedef S32 (*xBaseEventCB)(xBase*, xBase*, U32, const F32*, xBase*);
 // Size: 0x10
 struct xBase
 {
-    U32 id;
-    U8 baseType;
-    U8 linkCount;
-    U16 baseFlags;
-    xLinkAsset* link;
-    void (*eventFunc)(xBase*, xBase*, U32, F32*, xBase*, U32);
+    U32 id; // 0x0
+    U8 baseType; // 0x4
+    U8 linkCount; // 0x5
+    U16 baseFlags; // 0x6
+    xLinkAsset* link; // 0x8
+    void (*eventFunc)(xBase*, xBase*, U32, F32*, xBase*, U32); // 0xC
 };
 
-void xBaseInit(xBase* xb, xBaseAsset* asset);
+void xBaseInit(xBase* xb, const xBaseAsset* asset);
 void xBaseSetup(xBase* xb);
 void xBaseSave(xBase* ent, xSerial* s);
 void xBaseLoad(xBase* ent, xSerial* s);
