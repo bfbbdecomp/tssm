@@ -120,10 +120,10 @@ SB/Game/zWadNME.cpp:
 	.text       start:0x800B8B54 end:0x800B8B54
 	.text       start:0x800B8B54 end:0x800B8B64
 	.ctors      start:0x8035F4C4 end:0x8035F4C8
-	.rodata     start:0x8035F540 end:0x80362CF4
+	.rodata     start:0x8035F540 end:0x80365240
 	.data       start:0x8037F6A0 end:0x8038A1E8
 	.bss        start:0x803C4A00 end:0x803E1C40
-	.sdata      start:0x804B0060 end:0x804B0064
+	.sdata      start:0x804B0060 end:0x804B00B0
 	.sbss       start:0x804B08C0 end:0x804B0A68
 	.sdata2     start:0x804B2440 end:0x804B28F8
 	.sbss2      start:0x804B5000 end:0x804B5030
@@ -260,7 +260,7 @@ SB/Game/zWad3.cpp:
 	.bss        start:0x803F96C0 end:0x804040F0
 	.sdata      start:0x804B0278 end:0x804B02D0
 	.sbss       start:0x804B0E20 end:0x804B0F78
-	.sdata2     start:0x804B2CC0 end:0x804B2CC0
+	.sdata2     start:0x804B2CC0 end:0x804B2E90
 	.sbss2      start:0x804B5048 end:0x804B5058
 
 SB/Game/zWadEnt.cpp:
@@ -1261,7 +1261,7 @@ debugger/embedded/MetroTRK/Processor/ppc/Generic/flush_cache.c:
 	.text       start:0x802B60C0 end:0x802B60F8
 
 Runtime/__mem.c:
-	.init       start:0x80003100 end:0x80003130
+	.init       start:0x80003100 end:0x80003238
 
 debugger/embedded/MetroTRK/Portable/mem_TRK.c:
 	.init       start:0x80003238 end:0x8000328C
