@@ -48,8 +48,7 @@ jobs:
         run: |
           python configure.py --map --version ${{ matrix.version }} \
               --binutils /binutils --compilers /compilers
-          ninja all_source build/${{ matrix.version }}/progress.json \
-              build/${{ matrix.version }}/report.json
+          ninja all_source build/${{ matrix.version }}/report.json
           git log -1 --pretty='{"id": "%H", "email": "%ae", "time": "%ad", "message": "%s"}' \
               --date=format:"%Y-%m-%dT%H:%M:%S" > build/${{ matrix.version }}/progress-commit.json
 
